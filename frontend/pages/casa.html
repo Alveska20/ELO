@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar cômodos — E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- "Gerenciar cômodos": a lista de
+         cômodos. Abre pelo botão "Gerenciar cômodos" de Aparelhos e de Minha casa.
+         Layout simples (não existe no Figma), no estilo das outras telas.
+         O link "casa.html#novo" (de Minha casa) põe o cursor no formulário. -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div class="titulo-pagina">
+            <h1>Gerenciar cômodos</h1>
+            <p>Os cômodos da sua casa. Clique em um cômodo para ver os dispositivos dele.</p>
+        </div>
+
+        <div id="abas-casa"></div>
+
+        <div id="mensagem"></div>
+
+        <!-- Casa vazia (htmlCasaVazia em casa_comum.js): aparece aqui, acima do
+             formulário, quando a lista abaixo está vazia. -->
+        <div id="casa-vazia"></div>
+
+        <!-- Mesmo formulário para criar e para renomear (o campo escondido guarda o id) -->
+        <section class="card painel-formulario">
+            <h3 id="titulo-formulario">Novo cômodo</h3>
+            <form class="formulario" id="formulario-comodo">
+                <input type="hidden" id="comodo-id">
+                <div class="campo">
+                    <label for="comodo-nome">Nome do cômodo</label>
+                    <input type="text" id="comodo-nome" maxlength="50" placeholder="Ex.: Sala" required>
+                </div>
+                <div class="formulario-botoes">
+                    <button type="submit" class="botao">Salvar</button>
+                    <button type="button" class="botao botao-contorno oculto" id="botao-cancelar">Cancelar edição</button>
+                    <button type="button" class="botao botao-perigo oculto" id="botao-excluir">Excluir</button>
+                </div>
+            </form>
+        </section>
+
+        <div class="grade-3" id="lista-comodos"></div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/casa_comum.js"></script>
+    <script src="/js/casa.js"></script>
+</body>
+</html>

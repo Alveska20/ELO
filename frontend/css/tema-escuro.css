@@ -1,0 +1,278 @@
+/* =====================================================================
+   E.L.O. — tema-escuro.css
+
+   Visual escuro do LOGIN e do CADASTRO (para todos os perfis):
+   docs/figma/01-inicial/01-login-hifi.png e 02-cadastro-hifi.png.
+
+   Como funciona: TODAS as regras daqui começam com ".tema-escuro", e só
+   index.html e pages/cadastro.html têm <body class="tema-escuro">.
+   A maior parte do trabalho é trocar as VARIÁVEIS de cor do base.css:
+   os componentes usam var(--roxo), var(--branco) etc., então mudar a
+   variável aqui muda o componente inteiro.
+
+   As telas do PERFIL HOMEM não usam este arquivo: elas têm um CSS
+   próprio e completo, o css/escuro.css.
+   ===================================================================== */
+
+.tema-escuro {
+    /* Mesmos nomes do base.css, com valores do tema escuro.
+       --roxo vira o ciano de destaque; --branco vira o fundo dos cards. */
+    --roxo: #23D4F0;            /* destaque: links, números, botões */
+    --magenta: #23D4F0;         /* aba/item ativo, contornos de foco */
+    --verde-agua: #19B4ED;
+    --lilas: #0B2A40;           /* fundo de etiquetas e seções */
+    --lilas-forte: #0E3550;
+    --texto: #E8F1F8;
+    --texto-secundario: #9FB6C8;
+    --cinza-rodape: #6F8597;
+    --branco: #071A29;          /* fundo dos cards e campos */
+    --verde: #23D4F0;           /* toggle ligado (ciano no Figma) */
+    --vermelho: #FF6B7A;
+    --sombra: 0 4px 18px rgba(0, 0, 0, 0.35);
+
+    /* Cores que só existem no tema escuro */
+    --fundo-escuro: #031225;
+    --fundo-escuro-topo: #031D42;
+    --borda-card: #1C4C66;
+    --menu-ativo: #08455F;
+    --roxo-destaque: #A27AFF;   /* segunda cor dos gráficos/números */
+    --texto-no-ciano: #04121F;  /* texto escuro em cima do botão ciano */
+
+    color: var(--texto);
+    /* Fundo do Figma escuro: a foto da casa (img/casa-fundo.jpg) cobrindo a
+       página inteira, parada ao rolar (fixed), com uma camada azul-marinho
+       semitransparente por cima. Mesmo fundo das telas escuras
+       (css/escuro.css). A cor no fim só aparece se a foto não carregar. */
+    background:
+        linear-gradient(180deg, rgba(3, 29, 66, 0.50) 0%, rgba(3, 18, 37, 0.60) 60%),
+        url("../img/casa-fundo.jpg") center / cover no-repeat fixed,
+        var(--fundo-escuro);
+}
+
+/* Títulos brancos (no tema roxo eles usam --roxo). */
+.tema-escuro h1,
+.tema-escuro h2,
+.tema-escuro h3,
+.tema-escuro h4 {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.tema-escuro .texto-secundario {
+    color: var(--texto-secundario);
+}
+
+
+/* ---------------------------------------------------------------------
+   Cards, campos, botões e mensagens
+   --------------------------------------------------------------------- */
+.tema-escuro .card {
+    border: 1px solid var(--borda-card);
+}
+
+.tema-escuro .campo input,
+.tema-escuro .campo select,
+.tema-escuro .campo textarea {
+    border-color: var(--borda-card);
+    color: var(--texto);
+    background: #0B2438;
+}
+
+/* Botão principal: degradê ciano com texto escuro (botão "Entrar" do Figma). */
+.tema-escuro .botao {
+    background: linear-gradient(90deg, #47E3FA 0%, #19B4ED 100%);
+    border-color: transparent;
+    color: var(--texto-no-ciano);
+}
+
+.tema-escuro .mensagem-sucesso {
+    background: rgba(35, 212, 240, 0.12);
+}
+
+.tema-escuro .mensagem-erro {
+    background: rgba(255, 107, 122, 0.12);
+}
+
+.tema-escuro .placeholder {
+    /* Continua amarelo (é aviso para a equipe), só um pouco mais escuro. */
+    background: #FFE58A;
+    color: #3D3000;
+}
+
+/* ---------------------------------------------------------------------
+   Login e cadastro (01-inicial/01-login-hifi.png e 02-cadastro-hifi.png)
+   Painel de chamada à esquerda + cartão do formulário à direita.
+   --------------------------------------------------------------------- */
+.entrada-escura {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    max-width: 1280px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.entrada-painel {
+    flex: 0 1 520px;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 56px;
+    background: rgba(10, 40, 70, 0.55);
+    border: 1px solid var(--borda-card);
+    border-radius: var(--raio);
+}
+
+.entrada-marca strong {
+    display: block;
+    font-size: 44px;
+    line-height: 1.1;
+    color: #FFFFFF;
+}
+
+/* Foto pequena da casa no painel da esquerda (img/casa-foto.jpg),
+   acima de "CONECTE-SE AO SEU LAR", com cantos arredondados. */
+.entrada-foto {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;   /* recorta a foto para caber sem distorcer */
+    margin-top: 36px;
+    border-radius: 12px;
+}
+
+.entrada-chamada-pequena {
+    margin-top: 28px;
+    color: var(--roxo);
+    letter-spacing: 0.04em;
+}
+
+.entrada-chamada {
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #FFFFFF;
+}
+
+.entrada-texto {
+    font-size: 22px;
+    color: #FFFFFF;
+}
+
+.entrada-chips {
+    display: flex;
+    gap: 16px;
+    margin-top: auto;   /* empurra os chips para baixo do painel */
+    padding: 20px;
+    background: rgba(17, 60, 90, 0.6);
+    border-radius: 14px;
+    align-self: flex-start;
+}
+
+.entrada-chips span {
+    padding: 14px 22px;
+    border-radius: 10px;
+    background: #1C5873;
+}
+
+.entrada-chips span.ativo {
+    background: var(--roxo);
+    color: var(--texto-no-ciano);
+}
+
+.entrada-rodape {
+    margin: 32px 0 0;
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+.entrada-formulario {
+    flex: 0 1 560px;
+    padding: 56px 60px;
+}
+
+.entrada-formulario h1 {
+    font-size: 36px;
+}
+
+.entrada-formulario .botao {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.entrada-link {
+    margin-top: 32px;
+    color: var(--roxo);
+}
+
+/* "Como você se identifica?": 3 opções em pílula, no mesmo
+   estilo dos chips do painel. O círculo do rádio fica escondido só na tela
+   (o teclado e o leitor de tela continuam usando o rádio de verdade). */
+.entrada-opcoes {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.entrada-opcoes legend {
+    padding: 0;   /* tira o recuo padrão do <legend>: alinha com os outros rótulos */
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.entrada-opcoes-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.entrada-opcoes label {
+    font-weight: 400;   /* as opções não ficam em negrito como os rótulos dos campos */
+}
+
+.entrada-opcoes input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.entrada-opcoes span {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 1px solid var(--borda-card);
+    border-radius: 10px;
+    background: #0B2438;
+    cursor: pointer;
+}
+
+.entrada-opcoes input:checked + span {
+    background: var(--roxo);
+    border-color: var(--roxo);
+    color: var(--texto-no-ciano);
+    font-weight: 600;
+}
+
+/* Contorno visível ao navegar pelo teclado (Tab e setas). */
+.entrada-opcoes input:focus-visible + span {
+    outline: 3px solid var(--roxo);
+    outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+    /* No celular o painel de chamada some: o formulário vem primeiro. */
+    .entrada-painel {
+        display: none;
+    }
+
+    .entrada-escura {
+        justify-content: center;
+    }
+
+    .entrada-formulario {
+        padding: 32px 24px;
+    }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambientes — ELO</title>
+    <link rel="stylesheet" href="/css/escuro.css">
+</head>
+<!-- Visual escuro — Ambientes (= cômodos). Layout: docs/figma/06-perfil-homem/03-ambientes-hifi.png
+     Fotos dos ambientes e "Favoritos" não existem no sistema. -->
+<body class="escuro">
+    <div id="cabecalho"></div>
+
+    <main class="h-principal">
+        <div id="aviso-global"></div>
+
+        <header class="h-topo">
+            <div>
+                <h1 data-texto="ambientes.titulo">Ambientes</h1>
+                <p data-texto="ambientes.subtitulo">Gerencie os cômodos e seus dispositivos.</p>
+            </div>
+            <span class="h-avatar" id="avatar" aria-hidden="true">U</span>
+        </header>
+
+        <div id="mensagem"></div>
+
+        <!-- Filtros + botão de adicionar -->
+        <div class="h-filtros" id="filtros" role="group" aria-label="Filtrar ambientes"></div>
+
+        <!-- Formulário (aparece ao clicar em "+ Adicionar ambiente") -->
+        <section class="h-cartao oculto" id="caixa-formulario" style="margin-bottom: 24px;">
+            <h2>Novo ambiente</h2>
+            <form class="h-formulario" id="formulario-ambiente">
+                <div class="h-campo">
+                    <label for="ambiente-nome">Nome do ambiente</label>
+                    <input type="text" id="ambiente-nome" required maxlength="60" placeholder="Ex.: Sala">
+                </div>
+                <div class="h-botoes">
+                    <button type="submit" class="h-botao">Salvar</button>
+                    <button type="button" class="h-botao h-botao-contorno" id="botao-cancelar">Cancelar</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="h-grade h-grade-3" id="lista-ambientes" aria-live="polite"></section>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/escuro/comum.js"></script>
+    <script src="/js/escuro/ambientes.js"></script>
+</body>
+</html>

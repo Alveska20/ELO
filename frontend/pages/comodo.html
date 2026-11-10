@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cômodo — E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- Layout simples (não existe no Figma). Endereço: comodo.html?id=N -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div class="titulo-pagina">
+            <p class="breadcrumb"><a href="/pages/casa.html">&larr; Voltar para Gerenciar cômodos</a></p>
+            <h1 id="nome-comodo">Cômodo</h1>
+        </div>
+
+        <div id="abas-casa"></div>
+
+        <div id="mensagem"></div>
+
+        <div class="cabecalho-secao">
+            <h2>Aparelhos</h2>
+            <a class="botao botao-contorno" href="/pages/dispositivos.html">Ir para Aparelhos</a>
+        </div>
+        <div class="grade-3" id="lista-dispositivos"></div>
+
+        <div class="cabecalho-secao">
+            <h2>Portas</h2>
+        </div>
+        <div class="grade-3" id="lista-portas"></div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/casa_comum.js"></script>
+    <script src="/js/comodo.js"></script>
+</body>
+</html>

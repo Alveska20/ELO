@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha casa — E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- "Minha casa", aba Início: primeira tela depois do login (perfil mulher).
+         Visual: docs/proposta/01-minha-casa-inicio.png (casa com dados) e
+         docs/proposta/02-minha-casa-vazia.png (casa sem cômodos).
+         O arquivo se chama dashboard.html (é a tela inicial depois do login). -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div id="aviso-global"></div>
+
+        <div class="titulo-pagina">
+            <h1 id="saudacao">Olá!</h1>
+            <p id="subtitulo">Sua casa inteligente. Tudo aqui é simulado.</p>
+        </div>
+
+        <div id="abas-casa"></div>
+
+        <div id="mensagem"></div>
+
+        <!-- Casa vazia: aparece no lugar de tudo abaixo quando não há cômodos -->
+        <div id="casa-vazia"></div>
+
+        <div id="resumo-casa" class="oculto">
+            <!-- Faixa com o status da casa e os modos Em casa / Fora / Desarmar.
+                 Os modos são SIMULAÇÃO: só trocam o texto, nada é salvo. -->
+            <section class="faixa-status">
+                <div>
+                    <h2 id="status-geral">Carregando...</h2>
+                    <p id="status-modo" aria-live="polite"></p>
+                </div>
+                <div class="modos" role="group" aria-label="Modo da casa (simulação)" id="modos">
+                    <button type="button" class="modo ativo" data-modo="em-casa" aria-pressed="true">Em casa</button>
+                    <button type="button" class="modo" data-modo="fora" aria-pressed="false">Fora</button>
+                    <button type="button" class="modo" data-modo="desarmar" aria-pressed="false">Desarmar</button>
+                </div>
+            </section>
+
+            <!-- 4 números: câmeras, porta principal, movimentos e Tags -->
+            <div class="grade-4 numeros-casa" id="numeros"></div>
+
+            <div class="minha-casa-grade">
+                <section class="card">
+                    <div class="bloco-titulo">
+                        <h2>Controles rápidos</h2>
+                        <a class="link-seta" href="/pages/dispositivos.html">Aparelhos →</a>
+                    </div>
+                    <div class="controles-rapidos" id="controles-rapidos"></div>
+
+                    <div class="bloco-titulo" style="margin-top: 36px;">
+                        <h2>Ambientes da casa</h2>
+                        <a class="link-seta" href="/pages/casa.html">Gerenciar cômodos →</a>
+                    </div>
+                    <div class="ambientes-mini" id="ambientes"></div>
+                </section>
+
+                <section class="card">
+                    <div class="bloco-titulo">
+                        <h2>Avisos</h2>
+                        <a class="link-seta" href="/pages/avisos.html">Ver todos →</a>
+                    </div>
+                    <div id="avisos"></div>
+
+                    <div class="bloco-titulo" style="margin-top: 36px;">
+                        <h2>Rotinas</h2>
+                        <a class="link-seta" href="/pages/automacoes.html">Rotinas →</a>
+                    </div>
+                    <div id="rotinas"></div>
+                </section>
+            </div>
+
+            <!-- Consumo e moradores: o sistema não mede energia nem tem outros
+                 moradores, então os dois cards mostram DADOS DE EXEMPLO, com selo. -->
+            <div class="minha-casa-grade minha-casa-grade-baixo">
+                <section class="card">
+                    <div class="bloco-titulo">
+                        <h2>Consumo de energia</h2>
+                        <span class="selo-exemplo">Dados de exemplo</span>
+                        <span class="link-seta">Esta semana</span>
+                    </div>
+                    <div id="consumo"></div>
+                </section>
+
+                <section class="card">
+                    <div class="bloco-titulo">
+                        <h2>Moradores</h2>
+                        <span class="selo-exemplo">Dados de exemplo</span>
+                    </div>
+                    <div id="moradores"></div>
+                    <button type="button" class="botao botao-contorno botao-em-breve" disabled>
+                        Gerenciar acessos <span class="selo-exemplo">Em breve</span>
+                    </button>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/casa_comum.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

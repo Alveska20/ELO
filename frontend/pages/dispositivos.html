@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aparelhos — E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- "Minha casa", aba Aparelhos. Visual: docs/proposta/04-aparelhos.png
+         As câmeras ficam na aba Câmeras. Portas aparecem como "Só consulta"
+         (não há como trancar ou destrancar). O arquivo se chama
+         dispositivos.html (a mesma rota de dispositivos da API). -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div class="titulo-com-botao">
+            <div class="titulo-pagina">
+                <h1>Aparelhos</h1>
+                <p>Ligue e desligue. Tudo aqui é simulado.</p>
+            </div>
+            <div class="formulario-botoes">
+                <a class="botao botao-contorno" href="/pages/casa.html">Gerenciar cômodos</a>
+                <button type="button" class="botao" id="botao-novo">+ Novo aparelho</button>
+            </div>
+        </div>
+
+        <div id="abas-casa"></div>
+
+        <div id="mensagem"></div>
+
+        <!-- Mesmo formulário para criar e editar (o campo escondido guarda o id).
+             Fica fechado até clicar em "+ Novo aparelho" ou em "Editar". -->
+        <section class="card painel-formulario oculto" id="painel-formulario">
+            <h3 id="titulo-formulario">Novo aparelho</h3>
+            <form class="formulario" id="formulario-dispositivo">
+                <input type="hidden" id="dispositivo-id">
+                <div class="campo">
+                    <label for="dispositivo-nome">Nome</label>
+                    <input type="text" id="dispositivo-nome" placeholder="Ex.: Luz da sala" required>
+                </div>
+                <div class="campo">
+                    <label for="dispositivo-tipo">Tipo</label>
+                    <select id="dispositivo-tipo" required></select>
+                </div>
+                <div class="campo">
+                    <label for="dispositivo-comodo">Cômodo</label>
+                    <select id="dispositivo-comodo"></select>
+                </div>
+                <!-- Só aparece quando o tipo é ar-condicionado -->
+                <div class="campo oculto" id="campo-temperatura">
+                    <label for="dispositivo-temperatura">Temperatura (16 a 30 °C)</label>
+                    <input type="number" id="dispositivo-temperatura" min="16" max="30" value="23">
+                </div>
+                <div class="formulario-botoes">
+                    <button type="submit" class="botao">Salvar</button>
+                    <button type="button" class="botao botao-contorno" id="botao-cancelar">Cancelar</button>
+                    <button type="button" class="botao botao-perigo oculto" id="botao-excluir">Excluir</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Filtros em pílula: Todos · Luzes · Climatização · Cortinas e janelas · Sensores · Portas -->
+        <div class="filtros" id="filtros" role="group" aria-label="Filtrar aparelhos"></div>
+
+        <div class="grade-3" id="lista-dispositivos"></div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/casa_comum.js"></script>
+    <script src="/js/dispositivos.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz educativo — Proteção E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- Visual: docs/proposta/10-quiz.png
+         Perguntas: doc da equipe, seção 8 (backend/app/content/quiz.json).
+         Educativo: não faz diagnóstico e não salva as respostas. -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div id="breadcrumb"></div>
+        <div class="titulo-pagina">
+            <h1>Quiz educativo</h1>
+            <p id="instrucao"></p>
+        </div>
+
+        <!-- Barra de progresso "1 de 10" -->
+        <div class="quiz-progresso" id="progresso">
+            <div class="quiz-barra"><span id="barra"></span></div>
+            <span id="contador"></span>
+        </div>
+
+        <div id="mensagem"></div>
+
+        <div class="quiz-layout">
+            <!-- Uma pergunta por vez, ou o resultado no final (quiz.js troca o conteúdo) -->
+            <section class="card quiz-cartao" id="quiz" aria-live="polite"></section>
+
+            <!-- Cartão de acolhimento ao lado da pergunta -->
+            <aside class="card quiz-acolhimento">
+                <span class="faixa-icone" aria-hidden="true">❤</span>
+                <p><span id="acolhimento-titulo"></span> <span id="acolhimento-texto"></span></p>
+                <a class="link-seta" href="/pages/protecao-orientacoes.html">Ver orientações →</a>
+            </aside>
+        </div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/saida_rapida.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/quiz.js"></script>
+</body>
+</html>

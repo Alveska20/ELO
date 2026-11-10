@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta — ELO</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+    <link rel="stylesheet" href="/css/tema-escuro.css">
+</head>
+<!-- Cadastro escuro para TODOS os perfis.
+     Visual: docs/figma/01-inicial/02-cadastro-hifi.png
+     Sem telefone (decisão da equipe) e sem "Concordo com os termos"
+     (ainda não existe política de privacidade: doc, seção 13).
+     "Confirmar senha" é conferido só no navegador (cadastro.js).
+     Pergunta obrigatória "Como você se identifica?" (3 opções em
+     pílula, no estilo escuro). A API /api/auth/register recebe nome, e-mail,
+     senha e perfil_acesso; o papel nunca vem deste formulário.
+     A tela é neutra: nenhum texto sobre as áreas do sistema. -->
+<body class="tema-escuro">
+    <main class="entrada-escura">
+        <section class="entrada-painel" aria-hidden="true">
+            <p class="entrada-marca"><strong>ELO</strong><span>Sua casa mais inteligente</span></p>
+            <img class="entrada-foto" src="/img/casa-foto.jpg" alt="">
+            <p class="entrada-chamada-pequena">CONECTE-SE AO SEU LAR</p>
+            <p class="entrada-chamada">Sua casa.<br>Seu controle.</p>
+            <p class="entrada-texto">Conforto, segurança e eficiência em um só lugar.</p>
+            <div class="entrada-chips">
+                <span>Rotinas</span>
+                <span class="ativo">Conforto</span>
+            </div>
+            <p class="entrada-rodape">ELO • Tecnologia para um lar mais simples.</p>
+        </section>
+
+        <section class="card entrada-formulario">
+            <h1>Criar sua conta</h1>
+            <p>Comece a conectar sua casa.</p>
+
+            <div id="mensagem"></div>
+
+            <form class="formulario" id="formulario-cadastro">
+                <div class="campo">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" name="nome" autocomplete="name"
+                           placeholder="Como você se chama?" required>
+                </div>
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" autocomplete="email"
+                           placeholder="seuemail@exemplo.com" required>
+                </div>
+                <!-- Grupo de 3 opções (rádio). "required" em uma delas já torna o grupo obrigatório. -->
+                <fieldset class="campo entrada-opcoes">
+                    <legend>Como você se identifica?</legend>
+                    <div class="entrada-opcoes-lista">
+                        <label><input type="radio" name="perfil_acesso" value="mulher" required><span>Mulher</span></label>
+                        <label><input type="radio" name="perfil_acesso" value="homem"><span>Homem</span></label>
+                        <label><input type="radio" name="perfil_acesso" value="nao_definido"><span>Prefiro não informar</span></label>
+                    </div>
+                </fieldset>
+                <div class="campo">
+                    <label for="senha">Senha (mínimo 8 caracteres)</label>
+                    <input type="password" id="senha" name="senha" autocomplete="new-password"
+                           minlength="8" placeholder="Crie uma senha" required>
+                </div>
+                <div class="campo">
+                    <label for="confirmar-senha">Confirmar senha</label>
+                    <input type="password" id="confirmar-senha" name="confirmar-senha" autocomplete="new-password"
+                           minlength="8" placeholder="Repita sua senha" required>
+                </div>
+                <button type="submit" class="botao">Criar conta</button>
+            </form>
+
+            <p class="entrada-link">
+                Já tem uma conta? <a href="/">Entrar</a>
+            </p>
+        </section>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/cadastro.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração — ELO</title>
+    <link rel="stylesheet" href="/css/escuro.css">
+</head>
+<!-- Administração no visual escuro: o admin usa o visual escuro, então a
+     Administração também é escura.
+     ESTA TELA NÃO EXISTE NO FIGMA: montada com os componentes do Figma escuro.
+     Somente papel = admin (as rotas /api/admin usam @admin_required).
+     REGRA DE PRIVACIDADE: esta tela não mostra (e não deve mostrar)
+     contatos de confiança, alertas de emergência nem dados do quiz. -->
+<body class="escuro">
+    <div id="cabecalho"></div>
+
+    <main class="h-principal">
+        <div id="aviso-global"></div>
+
+        <header class="h-topo">
+            <div>
+                <h1>Administração</h1>
+                <p>Por privacidade, a administração não tem acesso a contatos de confiança,
+                   alertas de emergência nem respostas do quiz.</p>
+            </div>
+            <span class="h-avatar" id="avatar" aria-hidden="true">A</span>
+        </header>
+
+        <div id="mensagem"></div>
+
+        <!-- Contas novas com perfil "não definido": aparecem em destaque -->
+        <div id="contas-novas"></div>
+
+        <!-- Abas: cada botão mostra uma seção (data-secao = id da seção) -->
+        <div class="h-filtros" role="group" aria-label="Seções da administração" id="abas-admin">
+            <button type="button" class="h-filtro ativo" aria-pressed="true" data-secao="secao-usuarios">Usuários</button>
+            <button type="button" class="h-filtro" aria-pressed="false" data-secao="secao-comodos">Cômodos</button>
+            <button type="button" class="h-filtro" aria-pressed="false" data-secao="secao-dispositivos">Dispositivos</button>
+            <button type="button" class="h-filtro" aria-pressed="false" data-secao="secao-tags">Tags</button>
+            <button type="button" class="h-filtro" aria-pressed="false" data-secao="secao-geral">Informações gerais</button>
+        </div>
+
+        <section id="secao-usuarios" class="h-cartao secao-admin">
+            <h2>Usuários e perfil de acesso</h2>
+            <p class="h-subtitulo">"Mulher" libera a Proteção E.L.O. e o visual roxo. "Homem" e "não definido"
+               usam o visual escuro, sem a Proteção. Quem escolhe o perfil é a própria pessoa ("Como você se
+               identifica?", no cadastro e em Configurações). A administração só vê o perfil, sem poder alterar.</p>
+            <div class="h-tabela-rolagem" id="tabela-usuarios"></div>
+        </section>
+
+        <section id="secao-comodos" class="h-cartao secao-admin oculto">
+            <h2>Cômodos</h2>
+            <div class="h-tabela-rolagem" id="tabela-comodos"></div>
+        </section>
+
+        <section id="secao-dispositivos" class="h-cartao secao-admin oculto">
+            <h2>Dispositivos</h2>
+            <div class="h-tabela-rolagem" id="tabela-dispositivos"></div>
+        </section>
+
+        <section id="secao-tags" class="h-cartao secao-admin oculto">
+            <h2>Tags</h2>
+            <div class="h-tabela-rolagem" id="tabela-tags"></div>
+        </section>
+
+        <section id="secao-geral" class="secao-admin oculto">
+            <div class="h-grade h-grade-3" id="informacoes-gerais"></div>
+        </section>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/escuro/comum.js"></script>
+    <script src="/js/escuro/admin.js"></script>
+</body>
+</html>

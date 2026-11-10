@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambiente — ELO</title>
+    <link rel="stylesheet" href="/css/escuro.css">
+</head>
+<!-- Visual escuro — detalhe de um ambiente (cômodo). ?id=N
+     Layout: docs/figma/06-perfil-homem/04-ambiente-detalhe-hifi.png -->
+<body class="escuro">
+    <div id="cabecalho"></div>
+
+    <main class="h-principal">
+        <div id="aviso-global"></div>
+
+        <header class="h-topo">
+            <div>
+                <a class="h-link" href="/pages/escuro/ambientes.html">← <span data-texto="ambientes.voltar">Voltar para ambientes</span></a>
+                <h1 id="nome-ambiente" style="margin-top: 14px;">Ambiente</h1>
+            </div>
+            <span class="h-avatar" id="avatar" aria-hidden="true">U</span>
+        </header>
+
+        <div id="mensagem"></div>
+
+        <section class="h-cartao h-detalhe-ambiente">
+            <!-- Foto do ambiente (no sistema: só o quadro escuro com o nome) -->
+            <div class="h-detalhe-foto"><span id="legenda-foto"></span></div>
+
+            <!-- Dispositivos do ambiente, com o interruptor -->
+            <div class="h-cartao">
+                <h2 data-texto="ambientes.dispositivos_titulo">Dispositivos do ambiente</h2>
+                <div id="lista-dispositivos"></div>
+            </div>
+
+            <!-- Cenas do ambiente = automações que mexem em algum aparelho deste cômodo -->
+            <div class="h-cartao">
+                <h2 data-texto="ambientes.cenas_titulo">Cenas do ambiente</h2>
+                <div id="lista-cenas"></div>
+            </div>
+        </section>
+
+        <!-- Editar e excluir o ambiente -->
+        <section class="h-cartao h-espaco">
+            <form class="h-formulario" id="formulario-ambiente">
+                <div class="h-campo">
+                    <label for="ambiente-nome">Nome do ambiente</label>
+                    <input type="text" id="ambiente-nome" required maxlength="60">
+                </div>
+                <div class="h-botoes">
+                    <button type="submit" class="h-botao">Salvar nome</button>
+                    <button type="button" class="h-botao h-botao-perigo" id="botao-excluir">Excluir ambiente</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/escuro/comum.js"></script>
+    <script src="/js/escuro/ambiente.js"></script>
+</body>
+</html>

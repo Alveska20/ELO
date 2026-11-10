@@ -1,0 +1,12 @@
+# Dependências do backend do E.L.O.
+# Instalar com: pip install -r requirements.txt
+#
+# Só três bibliotecas, de propósito:
+# - Flask: cria o servidor web e a API (já traz o werkzeug, usado para o hash de senha).
+# - python-dotenv: lê as configurações do arquivo .env.
+# - pytest: roda os testes automáticos.
+# O banco usa o módulo sqlite3, que já vem com o Python (não precisa instalar).
+
+Flask==3.1.3
+python-dotenv==1.2.4
+pytest==9.2.0

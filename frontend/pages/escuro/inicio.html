@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Início — ELO</title>
+    <link rel="stylesheet" href="/css/escuro.css">
+</head>
+<!-- Visual escuro — Início. Layout: docs/figma/06-perfil-homem/01-inicio-hifi.png
+     Só usa o css/escuro.css (nenhuma peça do visual roxo).
+     Os blocos do Figma que o sistema não tem (consumo, moradores,
+     atividades) mostram DADOS FICTÍCIOS de exemplo (homem.json → exemplos),
+     sempre com o selo "Dados de exemplo". A temperatura é a do ar-condicionado.
+     Sem cômodos, a tela mostra a "casa vazia" no lugar dos cards. -->
+<body class="escuro">
+    <div id="cabecalho"></div>
+
+    <main class="h-principal">
+        <div id="aviso-global"></div>
+
+        <header class="h-topo">
+            <div>
+                <h1 id="saudacao">Olá!</h1>
+                <p data-texto="inicio.subtitulo">Sua casa conectada em um só lugar.</p>
+            </div>
+            <span class="h-avatar" id="avatar" aria-hidden="true">U</span>
+        </header>
+
+        <div id="mensagem"></div>
+
+        <!-- Casa vazia: aparece no lugar de tudo abaixo quando não há cômodos -->
+        <div id="casa-vazia"></div>
+
+        <div id="conteudo-casa" class="oculto">
+            <!-- 4 cartões de número -->
+            <section class="h-grade h-grade-4" id="numeros" aria-label="Resumo da casa"></section>
+
+            <div class="h-inicio-meio">
+                <!-- Consumo de energia: DADOS DE EXEMPLO (o sistema não mede energia) -->
+                <section class="h-cartao">
+                    <div class="h-cartao-topo">
+                        <h2 data-texto="inicio.consumo_titulo">Consumo de energia</h2>
+                        <span class="h-selo-exemplo">Dados de exemplo</span>
+                    </div>
+                    <div id="consumo"></div>
+                </section>
+
+                <!-- Moradores: DADOS DE EXEMPLO (o sistema não tem moradores/acessos) -->
+                <section class="h-cartao" style="grid-row: span 2;">
+                    <div class="h-linha-titulo">
+                        <div>
+                            <h2 data-texto="inicio.moradores_titulo">Moradores</h2>
+                            <p class="h-subtitulo" data-texto="inicio.moradores_subtitulo">Pessoas com acesso à sua casa</p>
+                        </div>
+                        <span class="h-selo-exemplo">Dados de exemplo</span>
+                    </div>
+                    <div id="moradores"></div>
+                </section>
+
+                <!-- Ambientes da Casa: cômodos do usuário (dados reais) -->
+                <section class="h-cartao">
+                    <div class="h-linha-titulo">
+                        <h2 data-texto="inicio.ambientes_titulo">Ambientes da Casa</h2>
+                        <a class="h-link" href="/pages/escuro/ambientes.html">Ver todos ▸</a>
+                    </div>
+                    <p data-texto="inicio.ambientes_subtitulo">Visão geral dos seus ambientes e dispositivos</p>
+                    <div class="h-ambientes-mini" id="ambientes"></div>
+                </section>
+            </div>
+
+            <div class="h-inicio-baixo">
+                <!-- Atividades recentes: DADOS DE EXEMPLO (o sistema não guarda histórico) -->
+                <section class="h-cartao">
+                    <div class="h-cartao-topo">
+                        <h2 data-texto="inicio.atividades_titulo">Atividades recentes</h2>
+                        <span class="h-selo-exemplo">Dados de exemplo</span>
+                    </div>
+                    <div id="atividades"></div>
+                </section>
+
+                <!-- Cenários = as automações do usuário, com o "play" que executa a simulação -->
+                <section class="h-cartao">
+                    <h2 data-texto="inicio.cenarios_titulo">Cenários</h2>
+                    <p class="h-subtitulo" data-texto="inicio.cenarios_subtitulo">Ative ambientes personalizados com um toque</p>
+                    <div class="h-cenarios" id="cenarios"></div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/escuro/comum.js"></script>
+    <script src="/js/escuro/inicio.js"></script>
+</body>
+</html>

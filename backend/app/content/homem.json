@@ -1,0 +1,255 @@
+{
+  "_como_editar": "Textos das telas escuras (perfil homem, perfil não definido e admin), em frontend/pages/escuro/. Títulos e chamadas copiados do Figma escuro (docs/figma/06-perfil-homem/), com a acentuação corrigida. Cada texto aparece no elemento HTML marcado com data-texto=\"bloco.chave\". Textos sobre violência, leis, telefones, serviços ou orientações SÓ podem vir do doc docs/conteudo/pesquisa_elo.md; o doc ainda não traz nada para este perfil. Depois de editar, basta recarregar a página.",
+  "inicio": {
+    "_fonte": "figma 06-perfil-homem/01-inicio-hifi.png. 'Dispositivos ligados' no lugar de 'Dispositivos online' (o sistema não mede conexão)",
+    "subtitulo": "Sua casa conectada em um só lugar.",
+    "card_dispositivos": "Dispositivos ligados",
+    "card_automacoes": "Rotinas ativas",
+    "card_consumo": "Consumo hoje",
+    "card_temperatura": "Temperatura",
+    "consumo_titulo": "Consumo de energia",
+    "moradores_titulo": "Moradores",
+    "moradores_subtitulo": "Pessoas com acesso à sua casa",
+    "ambientes_titulo": "Ambientes da Casa",
+    "ambientes_subtitulo": "Visão geral dos seus ambientes e dispositivos",
+    "atividades_titulo": "Atividades recentes",
+    "cenarios_titulo": "Cenários",
+    "cenarios_subtitulo": "Ative ambientes personalizados com um toque"
+  },
+  "minha_casa": {
+    "_fonte": "figma 06-perfil-homem/02-minha-casa-hifi.png",
+    "titulo": "Minha casa",
+    "subtitulo": "Conforto, segurança e eficiência, em um só lugar.",
+    "status_ok": "Tudo funcionando perfeitamente",
+    "card_dispositivos": "Dispositivos conectados",
+    "card_automacoes": "Automações ativas",
+    "endereco_titulo": "Residência Principal",
+    "acessos_rapidos": "Acessos rápidos",
+    "acessos_titulo": "Acessos",
+    "acessos_subtitulo": "Acesso remoto seguro",
+    "acessos_texto": "Gerencie sua casa de qualquer lugar."
+  },
+  "ambientes": {
+    "_fonte": "figma 06-perfil-homem/03-ambientes-hifi.png e 04-ambiente-detalhe-hifi.png",
+    "titulo": "Ambientes",
+    "subtitulo": "Gerencie os cômodos e seus dispositivos.",
+    "botao_adicionar": "+ Adicionar ambiente",
+    "voltar": "Voltar para ambientes",
+    "dispositivos_titulo": "Dispositivos do ambiente",
+    "cenas_titulo": "Cenas do ambiente"
+  },
+  "dispositivos": {
+    "_fonte": "figma 06-perfil-homem/05-dispositivos-hifi.png",
+    "titulo": "Dispositivos",
+    "subtitulo": "Controle todos os dispositivos conectados à sua casa.",
+    "lista_titulo": "Todos os dispositivos",
+    "acoes_rapidas": "Ações rápidas"
+  },
+  "automacoes": {
+    "_fonte": "figma 06-perfil-homem/06-automacoes-hifi.png",
+    "titulo": "Automações",
+    "subtitulo": "Crie e acompanhe as rotinas da sua casa.",
+    "botao_nova": "+ Nova automação",
+    "lista_titulo": "Minhas automações",
+    "detalhes_titulo": "Detalhes da automação",
+    "atividade_titulo": "Atividade recente"
+  },
+  "configuracoes": {
+    "_fonte": "figma 06-perfil-homem/07-configuracoes-hifi.png (no sistema = Meu Perfil)",
+    "titulo": "Configurações",
+    "subtitulo": "Personalize sua experiência e gerencie sua casa.",
+    "bloco_perfil": "Perfil e conta",
+    "bloco_casa": "Minha casa",
+    "bloco_preferencias": "Preferências",
+    "bloco_seguranca": "Segurança",
+    "bloco_automacoes": "Automações padrão",
+    "bloco_integracoes": "Integrações",
+    "bloco_aparencia": "Aparência"
+  },
+  "tags": {
+    "_fonte": "NÃO existe no Figma escuro: tela montada com os componentes do escuro (ver docs/PENDENCIAS.md, 'Figma escuro')",
+    "titulo": "Minhas Tags",
+    "subtitulo": "Atalhos físicos (tipo NFC). Aqui a leitura é simulada pelo botão \"Iniciar teste\"."
+  },
+  "casa_vazia": {
+    "_fonte": "docs/proposta/02-casa-vazia.png (mesmos textos do roxo, no estilo escuro)",
+    "titulo": "Sua casa ainda está vazia",
+    "texto": "Comece cadastrando os cômodos da sua casa. Depois, adicione os dispositivos de cada um.",
+    "passo1_titulo": "Cômodos",
+    "passo1_texto": "Sala, quarto, cozinha...",
+    "passo2_titulo": "Dispositivos",
+    "passo2_texto": "Luzes, ar, cortinas, câmeras",
+    "passo3_titulo": "Automações e Tags",
+    "passo3_texto": "Rotinas e atalhos"
+  },
+  "exemplos": {
+    "_fonte": "DADOS FICTÍCIOS DE EXEMPLO. O sistema não mede energia, não tem moradores, não guarda histórico nem integrações. Estes valores só preenchem os cards do Figma escuro e sempre aparecem com o selo 'Dados de exemplo' ou 'Sincronizando…' (textos dos selos: SELO_EXEMPLO e SELO_SINCRONIZANDO em frontend/js/escuro/comum.js). Não são dados reais de ninguém.",
+    "consumo_hoje": "8,4 kWh",
+    "consumo_variacao": "12% a menos que ontem",
+    "consumo_semana": [
+      {
+        "dia": "S",
+        "kwh": 5.2
+      },
+      {
+        "dia": "T",
+        "kwh": 6.8
+      },
+      {
+        "dia": "Q",
+        "kwh": 4.1
+      },
+      {
+        "dia": "Q",
+        "kwh": 7.3
+      },
+      {
+        "dia": "S",
+        "kwh": 6.0
+      },
+      {
+        "dia": "S",
+        "kwh": 9.1
+      },
+      {
+        "dia": "D",
+        "kwh": 8.4
+      }
+    ],
+    "moradores": [
+      {
+        "nome": "Morador A",
+        "papel": "Morador"
+      },
+      {
+        "nome": "Moradora B",
+        "papel": "Moradora"
+      }
+    ],
+    "atividades": [
+      {
+        "icone": "lampada.svg",
+        "texto": "Luz da sala ligada",
+        "hora": "20:31"
+      },
+      {
+        "icone": "casa.svg",
+        "texto": "Garagem aberta pelo ELO",
+        "hora": "00:02"
+      },
+      {
+        "icone": "alerta.svg",
+        "texto": "Ar-condicionado ligado pelo ELO",
+        "hora": "00:05"
+      }
+    ],
+    "endereco": "Rua Exemplo, 123 — Bairro Fictício",
+    "cidade": "Cidade Exemplo · Brasil",
+    "planta_texto": "Planta baixa com os cômodos cadastrados",
+    "acesso_remoto": "Último acesso remoto: hoje, 08:15",
+    "preferencias": [
+      [
+        "Tema",
+        "Escuro"
+      ],
+      [
+        "Notificações",
+        "Ativadas"
+      ],
+      [
+        "Alertas",
+        "Só os importantes"
+      ],
+      [
+        "Sons",
+        "Desligados"
+      ],
+      [
+        "Temperatura padrão",
+        "23 °C"
+      ],
+      [
+        "Idioma",
+        "Português (Brasil)"
+      ]
+    ],
+    "seguranca": [
+      [
+        "Autenticação em dois fatores",
+        "Desativada"
+      ],
+      [
+        "Histórico de acesso",
+        "3 acessos esta semana"
+      ],
+      [
+        "Permissões de usuários",
+        "1 administrador"
+      ]
+    ],
+    "integracoes": [
+      [
+        "Assistente de voz",
+        "Não conectado"
+      ],
+      [
+        "Calendário",
+        "Não conectado"
+      ],
+      [
+        "Medidor de energia",
+        "Sincronizando…"
+      ]
+    ],
+    "aparencia": [
+      [
+        "Tema",
+        "Escuro"
+      ],
+      [
+        "Tamanho dos cartões",
+        "Médio"
+      ],
+      [
+        "Organização",
+        "Por ambiente"
+      ]
+    ],
+    "dispositivo_consumo": "1,2 kWh",
+    "dispositivo_tensao": "127 V",
+    "dispositivo_conexao": "Wi-Fi forte",
+    "dispositivo_ultima_atividade": "Hoje, 19:42",
+    "dispositivo_tempo_ligado": "3 h 20 min",
+    "dispositivo_historico": [
+      [
+        "Hoje, 19:42",
+        "Ligado pelo app"
+      ],
+      [
+        "Hoje, 07:10",
+        "Desligado pela automação"
+      ],
+      [
+        "Ontem, 22:00",
+        "Desligado pelo Modo Noite"
+      ]
+    ],
+    "automacoes_execucoes_hoje": "3",
+    "automacao_condicao": "Só se houver alguém em casa",
+    "automacoes_historico": [
+      [
+        "Ontem, 22:00",
+        "Modo Noite executado"
+      ],
+      [
+        "Ontem, 07:00",
+        "Bom dia executado"
+      ]
+    ]
+  },
+  "conteudo_especifico": {
+    "_fonte": "não existe no Figma nem no doc",
+    "titulo": "[FUNCIONALIDADE A SER DEFINIDA — PERFIL HOMEM]",
+    "texto": "[ADICIONAR TEXTO AQUI — validar com o doc]"
+  }
+}

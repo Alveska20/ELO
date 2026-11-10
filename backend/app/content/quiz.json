@@ -1,0 +1,126 @@
+{
+  "_como_editar": "Perguntas 1 a 10: os 10 cenários do doc docs/conteudo/pesquisa_elo.md (seção 8), copiados como estão. O texto de cada pergunta é 'Cenário N — título: situação'. A tela já escreve 'Você acertou X de N.' antes do texto_resultado; por isso o texto_resultado começa na frase seguinte do doc. Para mudar uma pergunta, edite aqui (ou no doc e depois aqui) e rode: python -m app.database.recarregar_quiz (troca só o quiz, sem apagar os outros dados). Para tirar uma pergunta do quiz sem apagar, mude 'ativo' para false. Passo a passo no README, seção 13.",
+  "texto_resultado": "Mais do que a pontuação, o que importa é o que você aprendeu. Se alguma situação lembrou algo vivido por você ou por alguém próximo, você pode buscar orientação no Ligue 180 (gratuito, 24 horas). Em risco imediato, ligue 190.",
+  "perguntas": [
+    {
+      "ordem": 1,
+      "ativo": true,
+      "texto": "Cenário 1 — Controle do celular: Toda noite, o namorado de Ana pega o celular dela, lê as conversas e exige as senhas das redes sociais. Ele diz que \"quem não deve não teme\".",
+      "alternativas": {
+        "A": "É um cuidado normal entre namorados.",
+        "B": "Pode ser controle e vigilância, que são formas de violência psicológica.",
+        "C": "Só seria um problema se houvesse agressão física."
+      },
+      "resposta": "B",
+      "explicacao": "Vigilância constante e controle excessivo aparecem entre os sinais de alerta e caracterizam violência psicológica. As formas de violência previstas na Lei Maria da Penha não dependem necessariamente de agressão física."
+    },
+    {
+      "ordem": 2,
+      "ativo": true,
+      "texto": "Cenário 2 — O cartão do salário: O marido de Bia fica com o cartão do salário dela \"para organizar as contas\". Ela precisa pedir dinheiro a ele até para comprar remédio.",
+      "alternativas": {
+        "A": "Pode ser violência patrimonial.",
+        "B": "É só uma divisão de tarefas da casa.",
+        "C": "É violência moral."
+      },
+      "resposta": "A",
+      "explicacao": "Reter dinheiro ou recursos econômicos para controlar a mulher é violência patrimonial. É diferente de um orçamento feito em conjunto, por acordo dos dois."
+    },
+    {
+      "ordem": 3,
+      "ativo": true,
+      "texto": "Cenário 3 — Mentiras na internet: Depois do término, o ex-companheiro de Carla publica nas redes sociais que ela roubou dinheiro da empresa onde trabalha. Não é verdade.",
+      "alternativas": {
+        "A": "Não é violência, porque aconteceu na internet.",
+        "B": "É violência patrimonial.",
+        "C": "Pode ser violência moral."
+      },
+      "resposta": "C",
+      "explicacao": "Calúnia, difamação e injúria atingem a honra da mulher e são formas de violência moral, em qualquer meio."
+    },
+    {
+      "ordem": 4,
+      "ativo": true,
+      "texto": "Cenário 4 — Atingir pelos filhos: Depois da separação, o ex de Diana passou a ameaçar e maltratar o filho dos dois. Ele diz que é \"para ela aprender\".",
+      "alternativas": {
+        "A": "É um conflito familiar comum depois de uma separação.",
+        "B": "Pode ser violência vicária.",
+        "C": "É violência sexual."
+      },
+      "resposta": "B",
+      "explicacao": "Violência vicária é a violência contra filhos, familiares, dependentes ou pessoas da rede de apoio com o objetivo de atingir a mulher. Ela foi incluída na legislação brasileira em 2026."
+    },
+    {
+      "ordem": 5,
+      "ativo": true,
+      "texto": "Cenário 5 — \"É obrigação de esposa\": Elisa não quer ter relações sexuais, mas o marido insiste e diz que isso é \"obrigação de esposa\".",
+      "alternativas": {
+        "A": "Como são casados, existe consentimento automático.",
+        "B": "Só seria violência se fosse com uma pessoa desconhecida.",
+        "C": "O consentimento precisa ser livre. Impor a relação pode ser violência sexual."
+      },
+      "resposta": "C",
+      "explicacao": "O consentimento deve ser livre. Relação afetiva ou casamento não significam consentimento automático."
+    },
+    {
+      "ordem": 6,
+      "ativo": true,
+      "texto": "Cenário 6 — Pedido de socorro agora: À noite, você ouve gritos de socorro e barulho de objetos quebrando no apartamento ao lado.",
+      "alternativas": {
+        "A": "Ligar para o 190.",
+        "B": "Ligar para o 180.",
+        "C": "Esperar o dia seguinte para conversar com a vizinha."
+      },
+      "resposta": "A",
+      "explicacao": "Em emergência ou risco imediato, quando é necessária intervenção policial, o número é o 190 (Polícia Militar)."
+    },
+    {
+      "ordem": 7,
+      "ativo": true,
+      "texto": "Cenário 7 — Entender os direitos: Fernanda não está em perigo agora, mas quer entender seus direitos e saber quais serviços de apoio existem na cidade dela.",
+      "alternativas": {
+        "A": "190",
+        "B": "180",
+        "C": "192"
+      },
+      "resposta": "B",
+      "explicacao": "O Ligue 180 (Central de Atendimento à Mulher) oferece orientação sobre direitos e serviços, recebe denúncias e encaminha para os órgãos competentes. É gratuito e funciona 24 horas."
+    },
+    {
+      "ordem": 8,
+      "ativo": true,
+      "texto": "Cenário 8 — Suspeita de monitoramento: Gabi desconfia que o parceiro tem acesso ao celular dela e acompanha o que ela pesquisa.",
+      "alternativas": {
+        "A": "Trocar todas as senhas imediatamente, na frente dele.",
+        "B": "Confrontar o parceiro para confirmar a suspeita.",
+        "C": "Se for seguro, buscar orientação usando um aparelho ao qual ele não tenha acesso e evitar mudanças bruscas que possam aumentar o risco."
+      },
+      "resposta": "C",
+      "explicacao": "Alterações no celular ou nas contas podem ser percebidas. A orientação é usar um dispositivo seguro e buscar apoio especializado."
+    },
+    {
+      "ordem": 9,
+      "ativo": true,
+      "texto": "Cenário 9 — Ajudar uma amiga: Uma amiga conta que o namorado a humilha e a ameaça. Qual destas atitudes pode aumentar o risco para ela?",
+      "alternativas": {
+        "A": "Ir tirar satisfação com o namorado imediatamente.",
+        "B": "Escutar sem julgar e perguntar como você pode ajudar.",
+        "C": "Respeitar o tempo e as escolhas dela."
+      },
+      "resposta": "A",
+      "explicacao": "Para apoiar, o recomendado é escutar sem julgar, acreditar no relato, perguntar como ajudar e não confrontar o agressor sem avaliar os riscos."
+    },
+    {
+      "ordem": 10,
+      "ativo": true,
+      "texto": "Cenário 10 — Sem marcas: Helena sofre humilhações e ameaças há meses, mas nunca foi agredida fisicamente. Ela acha que não pode pedir ajuda porque \"não tem marcas\".",
+      "alternativas": {
+        "A": "É verdade: sem lesões, não há como pedir ajuda.",
+        "B": "Não é verdade: violência psicológica, sexual, moral e patrimonial também merecem atenção.",
+        "C": "Ela só pode pedir ajuda com um boletim de ocorrência."
+      },
+      "resposta": "B",
+      "explicacao": "Não é preciso ter marcas ou lesões para pedir ajuda. É possível procurar orientação mesmo sem saber classificar o que aconteceu."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proteção E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- Proteção E.L.O. — início. Visual: docs/proposta/07-protecao-inicio.png
+         Somente perfil_acesso = mulher. Textos: backend/app/content/protecao.json -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <section class="protecao-topo">
+            <div class="protecao-topo-texto">
+                <span class="selo" id="rotulo"></span>
+                <h1 id="titulo"></h1>
+                <p id="texto"></p>
+                <p class="protecao-destaque"><strong><span id="destaque"></span> <span id="destaque-continuacao"></span></strong></p>
+                <a class="botao botao-contorno botao-grande" href="/pages/protecao-ajuda.html">PRECISO DE AJUDA →</a>
+            </div>
+            <img class="protecao-ilustracao" src="/img/ilustracao-protecao.png" alt="">
+        </section>
+
+        <div class="grade-3" id="cards"></div>
+
+        <div class="faixa">
+            <span class="faixa-icone" aria-hidden="true">❤</span>
+            <div>
+                <p><strong id="faixa-titulo"></strong></p>
+                <p id="faixa-texto"></p>
+            </div>
+        </div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/saida_rapida.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/protecao.js"></script>
+</body>
+</html>

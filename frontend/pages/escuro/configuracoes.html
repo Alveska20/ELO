@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações — ELO</title>
+    <link rel="stylesheet" href="/css/escuro.css">
+</head>
+<!-- Visual escuro — Configurações (= Meu Perfil). Layout: docs/figma/06-perfil-homem/07-configuracoes-hifi.png
+     Dados reais: nome, e-mail, telefone (Perfil e conta) e as automações (Automações padrão).
+     O resto do Figma (senha, endereço, preferências, segurança, integrações,
+     aparência) não existe no sistema: esses blocos mostram DADOS
+     FICTÍCIOS (homem.json → exemplos), sempre com o selo "Dados de exemplo".
+     A própria pessoa escolhe "Como você se identifica?" no cartão
+     "Perfil e conta" (as mesmas 3 opções do cadastro). O admin não muda o
+     perfil de ninguém. -->
+<body class="escuro">
+    <div id="cabecalho"></div>
+
+    <main class="h-principal">
+        <div id="aviso-global"></div>
+
+        <header class="h-topo">
+            <div>
+                <h1 data-texto="configuracoes.titulo">Configurações</h1>
+                <p data-texto="configuracoes.subtitulo">Personalize sua experiência e gerencie sua casa.</p>
+            </div>
+            <span class="h-avatar" id="avatar" aria-hidden="true">U</span>
+        </header>
+
+        <div id="mensagem"></div>
+
+        <div class="h-grade h-grade-2">
+            <!-- Perfil e conta (dados reais) -->
+            <section class="h-cartao">
+                <h2 data-texto="configuracoes.bloco_perfil">Perfil e conta</h2>
+                <div class="h-perfil-linha">
+                    <span class="h-avatar" id="avatar-grande" aria-hidden="true">U</span>
+                    <div>
+                        <p style="font-size: 22px; margin: 0;" id="perfil-nome"></p>
+                        <p class="h-subtitulo" style="margin: 0;" id="perfil-papel"></p>
+                    </div>
+                </div>
+                <form class="h-formulario oculto" id="formulario-perfil">
+                    <div class="h-campo">
+                        <label for="perfil-campo-nome">Nome</label>
+                        <input type="text" id="perfil-campo-nome" required maxlength="80" autocomplete="name">
+                    </div>
+                    <div class="h-campo">
+                        <label for="perfil-campo-email">E-mail</label>
+                        <input type="email" id="perfil-campo-email" required autocomplete="email">
+                    </div>
+                    <div class="h-campo">
+                        <label for="perfil-campo-telefone">Telefone (opcional)</label>
+                        <input type="tel" id="perfil-campo-telefone" autocomplete="tel">
+                    </div>
+                </form>
+                <!-- "Como você se identifica?": formulário próprio, sempre visível. -->
+                <form id="formulario-identificacao" class="h-espaco">
+                    <fieldset class="h-opcoes">
+                        <legend>Como você se identifica?</legend>
+                        <div class="h-opcoes-lista">
+                            <label><input type="radio" name="perfil_acesso" value="mulher" required><span>Mulher</span></label>
+                            <label><input type="radio" name="perfil_acesso" value="homem"><span>Homem</span></label>
+                            <label><input type="radio" name="perfil_acesso" value="nao_definido"><span>Prefiro não informar</span></label>
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="h-botao h-botao-pequeno" style="margin-top: 12px;">Salvar</button>
+                </form>
+                <div class="h-botoes">
+                    <button type="button" class="h-botao h-botao-contorno" id="botao-editar">Editar perfil</button>
+                    <button type="button" class="h-botao h-botao-contorno" disabled title="Em breve: a troca de senha ainda não existe no sistema">Alterar senha</button>
+                </div>
+            </section>
+
+            <!-- Minha casa: o sistema não guarda endereço -->
+            <section class="h-cartao">
+                <div class="h-cartao-topo">
+                    <h2 data-texto="configuracoes.bloco_casa">Minha casa</h2>
+                    <span class="h-selo-exemplo">Dados de exemplo</span>
+                </div>
+                <p data-texto="minha_casa.endereco_titulo">Residência Principal</p>
+                <div id="casa-endereco"></div>
+                <div class="h-botoes">
+                    <button type="button" class="h-botao h-botao-contorno" disabled>Editar casa</button>
+                </div>
+            </section>
+
+            <!-- Preferências -->
+            <section class="h-cartao">
+                <div class="h-cartao-topo">
+                    <h2 data-texto="configuracoes.bloco_preferencias">Preferências</h2>
+                    <span class="h-selo-exemplo">Dados de exemplo</span>
+                </div>
+                <div id="preferencias"></div>
+            </section>
+
+            <!-- Segurança -->
+            <section class="h-cartao">
+                <div class="h-cartao-topo">
+                    <h2 data-texto="configuracoes.bloco_seguranca">Segurança</h2>
+                    <span class="h-selo-exemplo">Dados de exemplo</span>
+                </div>
+                <div id="seguranca"></div>
+            </section>
+
+            <!-- Automações padrão = as automações do usuário, com o interruptor (dado real) -->
+            <section class="h-cartao">
+                <h2 data-texto="configuracoes.bloco_automacoes">Automações padrão</h2>
+                <div id="automacoes"></div>
+            </section>
+
+            <!-- Integrações: os requisitos do projeto proíbem depender de integrações externas,
+                 então nada é conectado de verdade (dados de exemplo) -->
+            <section class="h-cartao">
+                <div class="h-cartao-topo">
+                    <h2 data-texto="configuracoes.bloco_integracoes">Integrações</h2>
+                    <span class="h-selo-exemplo">Dados de exemplo</span>
+                </div>
+                <div id="integracoes"></div>
+            </section>
+        </div>
+
+        <!-- Aparência -->
+        <section class="h-cartao h-espaco">
+            <div class="h-cartao-topo">
+                <h2 data-texto="configuracoes.bloco_aparencia">Aparência</h2>
+                <span class="h-selo-exemplo">Dados de exemplo</span>
+            </div>
+            <div id="aparencia"></div>
+        </section>
+
+        <div class="h-botoes" style="justify-content: flex-end;">
+            <!-- form="...": o botão envia o formulário do perfil, mesmo estando fora dele -->
+            <button type="submit" class="h-botao" form="formulario-perfil" id="botao-salvar" disabled>Salvar alterações</button>
+        </div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/escuro/comum.js"></script>
+    <script src="/js/escuro/configuracoes.js"></script>
+</body>
+</html>

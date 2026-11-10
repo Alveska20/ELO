@@ -1,0 +1,232 @@
+{
+  "_como_editar": "Textos da área Proteção E.L.O. Fonte oficial: docs/conteudo/pesquisa_elo.md (seção indicada em cada bloco). Textos marcados com 'fonte: figma' vieram do protótipo. Pode editar à vontade: a API lê este arquivo a cada acesso, não precisa reiniciar o servidor nem rodar o seed.",
+  "aviso_rodape": {
+    "_fonte": "doc, seção 11 (redação: docs/proposta/07 a 12)",
+    "texto": "Conteúdo informativo. Não substitui atendimento de emergência, jurídico, psicológico ou policial."
+  },
+  "saida_rapida": {
+    "_fonte": "doc, seção 10 (frase dos requisitos do projeto, seção 7.14)",
+    "limitacao": "A saída rápida leva a uma página neutra, mas não apaga o histórico do navegador nem garante que a atividade não seja vista."
+  },
+  "inicio": {
+    "_fonte": "figma 03-protecao/01-protecao-inicio-hifi.png e docs/proposta/07-protecao-inicio.png (textos dos cards e o rótulo)",
+    "rotulo": "PROTEÇÃO E.L.O.",
+    "titulo": "Informação também é proteção.",
+    "texto": "Aqui você encontra orientações, conteúdos e recursos para se informar, se prevenir e saber o que fazer em situações de violência.",
+    "destaque": "Você não está sozinha.",
+    "destaque_continuacao": "Este é um espaço seguro para você, no seu tempo e do seu jeito.",
+    "cards": [
+      {
+        "titulo": "Situações de violência",
+        "texto": "Entenda os tipos, sinais e o que fazer.",
+        "pagina": "protecao-violencia.html"
+      },
+      {
+        "titulo": "Quiz educativo",
+        "texto": "Teste seus conhecimentos sobre segurança e direitos.",
+        "pagina": "protecao-quiz.html"
+      },
+      {
+        "titulo": "Perguntas frequentes",
+        "texto": "Tire suas dúvidas sobre direitos e proteção.",
+        "pagina": "protecao-faq.html"
+      },
+      {
+        "titulo": "Contatos de confiança",
+        "texto": "Pessoas e serviços que podem apoiar você.",
+        "pagina": "protecao-contatos.html"
+      },
+      {
+        "titulo": "Orientações",
+        "texto": "Sinais de alerta, como buscar ajuda, rede de apoio e plano de segurança.",
+        "pagina": "protecao-orientacoes.html"
+      },
+      {
+        "titulo": "Configurações de emergência",
+        "texto": "Escolha os contatos e as ações do botão Preciso de ajuda.",
+        "pagina": "protecao-configuracoes.html"
+      }
+    ],
+    "faixa_titulo": "Prevenir também é um ato de coragem.",
+    "faixa_texto": "Informação, apoio e uma rede de proteção fazem toda a diferença."
+  },
+  "orientacoes": {
+    "_fonte": "doc, seção 5",
+    "objetivo": "Oferecer informação clara, caminhos de apoio e recursos de planejamento de segurança, sem se apresentar como serviço policial, jurídico, psicológico ou de emergência.",
+    "itens": [
+      {
+        "titulo": "Sinais de alerta",
+        "texto": "Controle excessivo, ameaças, humilhação, isolamento, perseguição, coerção sexual, controle do dinheiro e destruição de documentos/bens."
+      },
+      {
+        "titulo": "Tipos de violência",
+        "texto": "Física, psicológica, sexual, patrimonial, moral e vicária (esta última incluída na legislação brasileira em 2026)."
+      },
+      {
+        "titulo": "Como buscar ajuda",
+        "texto": "Explicar a diferença entre Ligue 180 (orientação/denúncia e encaminhamento) e 190 (emergência com risco imediato)."
+      },
+      {
+        "titulo": "Rede de apoio",
+        "texto": "Sugerir contato com pessoa de confiança, serviços especializados, saúde, assistência social, Defensoria Pública e Casa da Mulher Brasileira, conforme disponibilidade local."
+      },
+      {
+        "titulo": "Plano de segurança",
+        "texto": "Pensar previamente em contatos, local seguro, palavra-código, documentos/medicamentos essenciais e forma segura de pedir ajuda — apenas se isso não aumentar o risco."
+      },
+      {
+        "titulo": "Apoio a terceiros",
+        "texto": "Escutar sem julgar, acreditar no relato, perguntar como ajudar e não confrontar o agressor sem avaliar os riscos."
+      }
+    ]
+  },
+  "tipos_violencia": {
+    "_fonte": "doc, seção 6; abertura e fechamento: docs/proposta/08-situacoes-violencia.png",
+    "subtitulo": "Conheça os diferentes tipos de violência e fique atenta aos sinais.",
+    "texto": "Reconhecer uma situação é um primeiro passo para buscar informação, proteção e apoio.",
+    "tipos": [
+      {
+        "titulo": "Violência física",
+        "texto": "Conduta que prejudica a integridade ou a saúde corporal. Exemplos: empurrões, tapas, socos, queimaduras ou agressões com objetos."
+      },
+      {
+        "titulo": "Violência psicológica",
+        "texto": "Ações que causam dano emocional ou controlam escolhas e comportamentos. Exemplos: ameaças, humilhação, chantagem, isolamento, perseguição e vigilância constante."
+      },
+      {
+        "titulo": "Violência sexual",
+        "texto": "Ato sexual não desejado ou imposição/limitação dos direitos sexuais e reprodutivos. Consentimento deve ser livre; relação afetiva ou casamento não significam consentimento automático."
+      },
+      {
+        "titulo": "Violência patrimonial",
+        "texto": "Reter, subtrair ou destruir documentos, dinheiro, objetos, instrumentos de trabalho ou recursos econômicos."
+      },
+      {
+        "titulo": "Violência moral",
+        "texto": "Condutas como calúnia, difamação e injúria, que atingem a honra."
+      },
+      {
+        "titulo": "Violência vicária",
+        "texto": "Violência contra filhos, familiares, dependentes ou pessoas da rede de apoio com o objetivo de atingir a mulher."
+      }
+    ],
+    "nota_editorial": "As formas previstas na Lei Maria da Penha não dependem necessariamente de agressão física. A classificação jurídica de um caso concreto deve ser feita por profissionais/autoridades competentes.",
+    "fechamento_titulo": "Você não precisa enfrentar isso sozinha."
+  },
+  "faq": {
+    "_fonte": "doc, seção 7 (subtítulo: figma 03-protecao/03-perguntas-frequentes-hifi.png)",
+    "subtitulo": "Tire suas dúvidas sobre violência, ajuda e seus direitos.",
+    "perguntas": [
+      {
+        "pergunta": "Preciso ter marcas ou lesões para pedir ajuda?",
+        "resposta": "Não. Violência psicológica, sexual, moral e patrimonial também merecem atenção. É possível procurar orientação mesmo sem saber como classificar o que aconteceu."
+      },
+      {
+        "pergunta": "O que é o Ligue 180?",
+        "resposta": "É a Central de Atendimento à Mulher: oferece orientação sobre direitos e serviços, recebe denúncias e encaminha informações aos órgãos competentes. É gratuito e funciona 24 horas."
+      },
+      {
+        "pergunta": "Quando devo ligar para o 190?",
+        "resposta": "Em emergência ou risco imediato, quando é necessária intervenção policial."
+      },
+      {
+        "pergunta": "Posso pedir orientação para outra pessoa?",
+        "resposta": "Sim. O Ligue 180 também pode ser procurado por quem conhece uma situação de violência."
+      },
+      {
+        "pergunta": "Tenho que denunciar imediatamente?",
+        "resposta": "O site deve evitar pressionar a pessoa. Pode oferecer informações e opções de apoio; em risco imediato, orientar a buscar emergência. A decisão e o ritmo devem ser tratados com cuidado e sem julgamento."
+      },
+      {
+        "pergunta": "A automação garante que estarei segura?",
+        "resposta": "Não. Dispositivos podem falhar, perder conexão ou ser acessados indevidamente. São recursos complementares, não garantias de proteção."
+      },
+      {
+        "pergunta": "E se alguém monitorar meu celular?",
+        "resposta": "Se for seguro, procure orientação usando um dispositivo ao qual essa pessoa não tenha acesso. Evite mudanças bruscas em contas/dispositivos se isso puder aumentar o risco; busque apoio especializado."
+      },
+      {
+        "pergunta": "O que devo fazer se uma amiga contar que sofre violência?",
+        "resposta": "Escute, não culpe, respeite as escolhas dela e pergunte de que apoio precisa. Se houver perigo imediato, procure serviços de emergência."
+      }
+    ]
+  },
+  "quiz": {
+    "_fonte": "instrução: doc, seção 8 \"Instrução do quiz\"; cartão de acolhimento: docs/proposta/10-quiz.png. As perguntas ficam em quiz.json",
+    "instrucao": "Leia cada situação e escolha a alternativa que você acha mais adequada. Aqui não existe conclusão sobre ninguém: é um espaço para aprender, refletir e conhecer os caminhos de apoio.",
+    "acolhimento_titulo": "Você não está sozinha.",
+    "acolhimento_texto": "Se algo te fez lembrar de uma situação vivida, isso importa."
+  },
+  "contatos_confianca": {
+    "_fonte": "subtítulo: figma 03-protecao/04-contatos-confianca-hifi.png; aviso de consentimento: escrito para o sistema (doc, seção 11 pede consentimento informado) — EQUIPE: revisar",
+    "subtitulo": "Monte seu plano de segurança e mantenha seus contatos importantes sempre por perto.",
+    "aviso_consentimento": "Os contatos que você cadastrar aqui (nome, telefone e relação) ficam salvos apenas na sua conta e servem somente para a área Preciso de ajuda mostrar para quem um alerta seria enviado. Nesta versão o envio é uma simulação: ninguém recebe mensagem. Você pode editar ou excluir qualquer contato a qualquer momento. O administrador do E.L.O. não tem acesso a esses dados.",
+    "plano_seguranca": {
+      "_fonte": "doc, seção 5 (\"Plano de segurança\"), em forma de lista: docs/proposta/11-contatos-confianca.png. As marcações NÃO são salvas",
+      "texto": "Pense nisso com antecedência, apenas se não aumentar o risco. As marcações ficam só nesta tela e não são salvas.",
+      "itens": [
+        "Contatos de confiança para avisar",
+        "Um local seguro para ir",
+        "Uma palavra-código combinada",
+        "Documentos e medicamentos essenciais",
+        "Uma forma segura de pedir ajuda"
+      ]
+    }
+  },
+  "preciso_de_ajuda": {
+    "_fonte": "textos de abertura: figma 03-protecao/05-preciso-de-ajuda-hifi.png; cartões: docs/proposta/12-preciso-de-ajuda.png, resumindo o doc, seção 9 (os detalhes completos ficam em contatos_uteis)",
+    "titulo": "Preciso de ajuda",
+    "texto": "Você não está sozinha. Se estiver em perigo ou se sentindo insegura, busque ajuda. Aqui estão algumas opções disponíveis para você.",
+    "canais_resumo": [
+      {
+        "numero": "180",
+        "nome": "Central de Atendimento à Mulher",
+        "resumo": "Gratuito, 24 horas, todos os dias"
+      },
+      {
+        "numero": "190",
+        "nome": "Polícia Militar",
+        "resumo": "Em caso de emergência, quando houver risco imediato"
+      }
+    ],
+    "servicos": [
+      {
+        "titulo": "Delegacia da Mulher",
+        "texto": "Onde houver na sua cidade"
+      },
+      {
+        "titulo": "Serviços de saúde",
+        "texto": "Unidades de saúde e assistência social"
+      },
+      {
+        "titulo": "Rede de apoio",
+        "texto": "Defensoria, Casa da Mulher Brasileira e outros"
+      },
+      {
+        "titulo": "Chat E.L.O.",
+        "texto": "Em breve"
+      }
+    ],
+    "avisar_titulo": "Avisar meus contatos",
+    "avisar_texto": "[SIMULAÇÃO] Nada é enviado de verdade."
+  },
+  "contatos_uteis": {
+    "_fonte": "doc, seção 9",
+    "canais": [
+      {
+        "numero": "190",
+        "nome": "Polícia Militar",
+        "texto": "Emergência e risco imediato que demande intervenção policial."
+      },
+      {
+        "numero": "180",
+        "nome": "Central de Atendimento à Mulher",
+        "texto": "Gratuita, 24 horas, todos os dias; orientação, informações sobre a rede de atendimento, registro e encaminhamento de denúncias."
+      }
+    ],
+    "whatsapp_180": "(61) 9610-0180",
+    "email_180": "central180@mulheres.gov.br",
+    "rede_local": "Delegacia de Defesa da Mulher (quando houver), Casa da Mulher Brasileira, Centro de Referência da Mulher, Defensoria Pública, Ministério Público, unidades de saúde e assistência social.",
+    "aviso_conferir": "Importante: antes de publicar, conferir os canais oficiais, disponibilidade local e links atualizados."
+  }
+}

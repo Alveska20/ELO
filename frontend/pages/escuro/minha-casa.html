@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha casa — ELO</title>
+    <link rel="stylesheet" href="/css/escuro.css">
+</head>
+<!-- Visual escuro — Minha casa. Layout: docs/figma/06-perfil-homem/02-minha-casa-hifi.png
+     Endereço, planta da casa e "Acesso remoto" não existem no sistema.
+     Esses blocos mostram DADOS FICTÍCIOS (homem.json → exemplos), sempre com o
+     selo "Dados de exemplo" ou "Sincronizando…". Sem cômodos: "casa vazia". -->
+<body class="escuro">
+    <div id="cabecalho"></div>
+
+    <main class="h-principal">
+        <div id="aviso-global"></div>
+
+        <header class="h-topo">
+            <div>
+                <h1 id="saudacao">Olá!</h1>
+                <p data-texto="inicio.subtitulo">Sua casa conectada em um só lugar.</p>
+            </div>
+            <span class="h-avatar" id="avatar" aria-hidden="true">U</span>
+        </header>
+
+        <div id="mensagem"></div>
+
+        <!-- Casa vazia: aparece no lugar dos cards de baixo quando não há cômodos -->
+        <div id="casa-vazia"></div>
+
+        <!-- Faixa "Minha casa · Online" -->
+        <section class="h-casa-topo">
+            <div>
+                <h2 data-texto="minha_casa.titulo">Minha casa</h2>
+                <span class="h-selo" id="selo-status">Online</span>
+                <p id="status-casa" style="margin-top: 6px;"></p>
+                <p class="h-subtitulo" data-texto="minha_casa.subtitulo">Conforto, segurança e eficiência, em um só lugar.</p>
+                <div class="h-mini-numeros" id="numeros-casa"></div>
+                <div id="avisos-casa"></div>
+            </div>
+            <!-- Endereço da residência: o sistema não guarda endereço (dado de exemplo) -->
+            <div class="h-cartao" style="text-align: center;">
+                <p><span data-texto="minha_casa.endereco_titulo">Residência Principal</span>
+                   <span class="h-selo-exemplo">Dados de exemplo</span></p>
+                <p id="endereco"></p>
+                <button type="button" class="h-botao h-botao-contorno h-botao-pequeno" disabled>Editar casa</button>
+            </div>
+        </section>
+
+        <div id="conteudo-casa">
+        <div class="h-grade h-grade-2 h-espaco">
+            <!-- "Acessos rápidos" = as luzes da casa, uma por vez, com o interruptor -->
+            <section class="h-cartao">
+                <h2 data-texto="minha_casa.acessos_rapidos">Acessos rápidos</h2>
+                <div class="h-carrossel">
+                    <button type="button" class="h-carrossel-seta" id="seta-anterior" aria-label="Luz anterior">‹</button>
+                    <div class="h-carrossel-item" id="carrossel" aria-live="polite"></div>
+                    <button type="button" class="h-carrossel-seta" id="seta-proxima" aria-label="Próxima luz">›</button>
+                </div>
+            </section>
+
+            <!-- Planta da casa: no lugar do desenho, os cômodos (dados reais) -->
+            <section class="h-cartao">
+                <div class="h-cartao-topo">
+                    <h2>Planta da casa</h2>
+                    <span class="h-selo-exemplo">Sincronizando…</span>
+                </div>
+                <p class="h-subtitulo" id="planta"></p>
+                <div class="h-planta" id="comodos"></div>
+            </section>
+        </div>
+
+        <!-- "Acessos" (acesso remoto): não existe no sistema (dado de exemplo) -->
+        <section class="h-cartao h-espaco h-acessos">
+            <div style="text-align: center;">
+                <h2 data-texto="minha_casa.acessos_titulo">Acessos</h2>
+                <p data-texto="minha_casa.acessos_subtitulo">Acesso remoto seguro</p>
+                <p class="h-subtitulo" data-texto="minha_casa.acessos_texto">Gerencie sua casa de qualquer lugar.</p>
+            </div>
+            <div class="h-cartao" id="acessos"></div>
+        </section>
+        </div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/escuro/comum.js"></script>
+    <script src="/js/escuro/minha_casa.js"></script>
+</body>
+</html>

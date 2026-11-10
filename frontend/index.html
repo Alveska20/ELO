@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar — ELO</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+    <link rel="stylesheet" href="/css/tema-escuro.css">
+</head>
+<!-- Login escuro para TODOS os perfis.
+     Visual: docs/figma/01-inicial/01-login-hifi.png
+     A tela é neutra de propósito: fala só da casa inteligente, porque
+     qualquer pessoa que abrir o site vê esta página (decisão da equipe).
+     Não há "Lembrar de mim" nem "Esqueceu a senha?" (fora dos requisitos
+     do projeto). -->
+<body class="tema-escuro">
+    <main class="entrada-escura">
+        <!-- Painel da esquerda: foto da casa e textos de chamada do Figma -->
+        <section class="entrada-painel" aria-hidden="true">
+            <p class="entrada-marca"><strong>ELO</strong><span>Sua casa mais inteligente</span></p>
+            <img class="entrada-foto" src="/img/casa-foto.jpg" alt="">
+            <p class="entrada-chamada-pequena">CONECTE-SE AO SEU LAR</p>
+            <p class="entrada-chamada">Sua casa.<br>Seu controle.</p>
+            <p class="entrada-texto">Conforto, segurança e eficiência em um só lugar.</p>
+            <div class="entrada-chips">
+                <span>Rotinas</span>
+                <span class="ativo">Conforto</span>
+            </div>
+        </section>
+
+        <!-- Formulário (os ids são os que o login.js usa) -->
+        <section class="card entrada-formulario">
+            <h1>Entrar na sua conta</h1>
+            <p>Bem-vindo de volta ao ELO.</p>
+
+            <div id="mensagem"></div>
+
+            <form class="formulario" id="formulario-login">
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" autocomplete="email"
+                           placeholder="seuemail@exemplo.com" required>
+                </div>
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" autocomplete="current-password" required>
+                </div>
+                <button type="submit" class="botao">Entrar</button>
+            </form>
+
+            <p class="entrada-link">
+                Ainda não tem uma conta? <a href="/pages/cadastro.html">Criar conta</a>
+            </p>
+        </section>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+</html>

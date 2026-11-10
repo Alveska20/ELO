@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotinas — E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- Layout simples: o Figma tem a aba "Rotinas", mas não tem a tela. -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div class="titulo-pagina">
+            <h1>Rotinas</h1>
+            <p>Rotinas que mudam vários dispositivos de uma vez. Nesta versão elas rodam pelo botão
+               "Executar (simulação)"; o horário fica só registrado.</p>
+        </div>
+
+        <div id="abas-casa"></div>
+
+        <div id="mensagem"></div>
+        <!-- Resultado da última execução -->
+        <div id="resultado-execucao"></div>
+
+        <!-- Casa vazia (htmlCasaVazia em casa_comum.js): aparece aqui, acima do
+             formulário, quando a lista abaixo está vazia. -->
+        <div id="casa-vazia"></div>
+
+        <section class="card painel-formulario">
+            <h3 id="titulo-formulario">Nova automação</h3>
+            <form class="formulario" id="formulario-automacao">
+                <input type="hidden" id="automacao-id">
+                <div class="campo">
+                    <label for="automacao-nome">Nome</label>
+                    <input type="text" id="automacao-nome" placeholder="Ex.: Modo Noite" required>
+                </div>
+                <div class="campo">
+                    <label for="automacao-descricao">Descrição</label>
+                    <textarea id="automacao-descricao" rows="2"></textarea>
+                </div>
+                <div class="campo">
+                    <label for="automacao-gatilho">Gatilho</label>
+                    <select id="automacao-gatilho">
+                        <option value="manual">Manual (só pelo botão)</option>
+                        <option value="horario">Horário</option>
+                    </select>
+                </div>
+                <div class="campo oculto" id="campo-horario">
+                    <label for="automacao-horario">Horário</label>
+                    <input type="time" id="automacao-horario">
+                </div>
+
+                <fieldset class="campo">
+                    <legend><strong>Ações: o que cada dispositivo deve fazer</strong></legend>
+                    <p class="texto-secundario">Marque os dispositivos que entram na automação.</p>
+                    <div id="lista-acoes"></div>
+                </fieldset>
+
+                <label class="campo-checkbox">
+                    <input type="checkbox" id="automacao-verificar-portas">
+                    Verificar portas e janelas (só informa, não tranca nada)
+                </label>
+                <label class="campo-checkbox">
+                    <input type="checkbox" id="automacao-ativo" checked>
+                    Automação ativa
+                </label>
+
+                <div class="formulario-botoes">
+                    <button type="submit" class="botao">Salvar</button>
+                    <button type="button" class="botao botao-contorno oculto" id="botao-cancelar">Cancelar edição</button>
+                </div>
+            </form>
+        </section>
+
+        <div class="grade" id="lista-automacoes"></div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/casa_comum.js"></script>
+    <script src="/js/automacoes.js"></script>
+</body>
+</html>

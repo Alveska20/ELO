@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preciso de ajuda — Proteção E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- Visual: docs/proposta/12-preciso-de-ajuda.png
+         Canais: doc da equipe, seção 9 (só exibir: nenhum número é discado).
+         A seta de cada canal abre os detalhes (WhatsApp e e-mail do 180).
+         "Avisar meus contatos": SIMULAÇÃO, nada é enviado de verdade. -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div id="breadcrumb"></div>
+        <div class="titulo-pagina">
+            <h1 id="titulo">Preciso de ajuda</h1>
+            <p id="texto"></p>
+        </div>
+
+        <!-- Ligue 180 e Ligue 190 -->
+        <div id="canais"></div>
+
+        <!-- Delegacia da Mulher · Serviços de saúde · Rede de apoio · Chat E.L.O. -->
+        <div class="grade-4" id="servicos"></div>
+
+        <!-- Simulação do alerta para os contatos de confiança -->
+        <section class="card avisar-contatos">
+            <h2 id="avisar-titulo">Avisar meus contatos</h2>
+            <div class="formulario-botoes">
+                <button type="button" class="botao" id="botao-alerta">Simular envio de alerta</button>
+                <button type="button" class="botao botao-contorno" id="botao-localizacao">Simular compartilhar localização</button>
+            </div>
+            <p class="texto-secundario" id="avisar-texto"></p>
+            <div id="resultado" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/saida_rapida.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/ajuda.js"></script>
+</body>
+</html>

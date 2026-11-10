@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Tags — ELO</title>
+    <link rel="stylesheet" href="/css/escuro.css">
+</head>
+<!-- Visual escuro — Minhas Tags (atalhos tipo NFC; leitura SIMULADA).
+     ESTA TELA NÃO EXISTE NO FIGMA ESCURO: foi montada só com componentes do
+     Figma escuro (números, cartões, botões, interruptor, formulário).
+     A equipe precisa desenhá-la (ver docs/PENDENCIAS.md, "Figma escuro"). -->
+<body class="escuro">
+    <div id="cabecalho"></div>
+
+    <main class="h-principal">
+        <div id="aviso-global"></div>
+
+        <header class="h-topo">
+            <div>
+                <h1 data-texto="tags.titulo">Minhas Tags</h1>
+                <p data-texto="tags.subtitulo">Atalhos físicos (tipo NFC). Aqui a leitura é simulada pelo botão "Iniciar teste".</p>
+            </div>
+            <div class="h-topo-acoes">
+                <button type="button" class="h-botao" id="botao-nova">+ Nova Tag</button>
+                <span class="h-avatar" id="avatar" aria-hidden="true">U</span>
+            </div>
+        </header>
+
+        <div id="mensagem"></div>
+
+        <section class="h-grade h-grade-3" id="numeros" aria-label="Resumo das Tags"></section>
+
+        <!-- Simular a leitura digitando o código -->
+        <section class="h-cartao h-espaco">
+            <h2>Simular leitura</h2>
+            <form class="h-busca" id="formulario-leitura" style="flex-wrap: wrap;">
+                <label for="codigo-lido">Código da Tag</label>
+                <input type="text" id="codigo-lido" required placeholder="Ex.: SALA" style="width: 220px;">
+                <button type="submit" class="h-botao h-botao-pequeno">Ler Tag</button>
+            </form>
+        </section>
+
+        <!-- Formulário de nova/editar Tag -->
+        <section class="h-cartao oculto h-espaco" id="caixa-formulario">
+            <h2 id="titulo-formulario">Nova Tag</h2>
+            <form class="h-formulario" id="formulario-tag">
+                <input type="hidden" id="tag-id">
+                <div class="h-duas-colunas">
+                    <div class="h-campo">
+                        <label for="tag-nome">Nome</label>
+                        <input type="text" id="tag-nome" required maxlength="60">
+                    </div>
+                    <div class="h-campo">
+                        <label for="tag-codigo">Código</label>
+                        <input type="text" id="tag-codigo" required maxlength="30">
+                    </div>
+                    <div class="h-campo">
+                        <label for="tag-funcao">Função</label>
+                        <select id="tag-funcao"></select>
+                    </div>
+                    <div class="h-campo oculto" id="campo-comodo">
+                        <label for="tag-comodo">Ambiente</label>
+                        <select id="tag-comodo"></select>
+                    </div>
+                </div>
+                <label class="h-campo-check"><input type="checkbox" id="tag-ativo" checked> Ativa</label>
+                <div class="h-botoes">
+                    <button type="submit" class="h-botao">Salvar</button>
+                    <button type="button" class="h-botao h-botao-contorno" id="botao-cancelar">Cancelar</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="h-disp-grade h-espaco" id="lista" aria-live="polite"
+                 style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;"></section>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/escuro/comum.js"></script>
+    <script src="/js/escuro/tags.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+/* =====================================================================
+   E.L.O. — base.css
+   Fontes, cores, tipografia e regras gerais usadas em todas as páginas.
+
+   Ordem de carregamento nas páginas:
+     1. base.css        (este arquivo)
+     2. componentes.css (cabeçalho, botões, cards, formulários...)
+     3. paginas.css     (detalhes de cada tela)
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   Fonte Poppins (guia de tipografia do Figma: 99-outros/03-guia-tipografia.png)
+   Os arquivos ficam em frontend/fonts/ em vez de virem do Google Fonts:
+   assim o navegador não avisa nenhum site externo a cada visita
+   (cuidado de privacidade do doc da equipe, seção 2).
+   --------------------------------------------------------------------- */
+@font-face {
+    font-family: "Poppins";
+    src: url("../fonts/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("../fonts/Poppins-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("../fonts/Poppins-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("../fonts/Poppins-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-display: swap;
+}
+
+
+/* ---------------------------------------------------------------------
+   Variáveis: as cores e medidas ficam num lugar só.
+   Para mudar o roxo do site inteiro, basta mudar --roxo aqui.
+   Cores tiradas do Figma roxo e das imagens de docs/proposta/.
+   --------------------------------------------------------------------- */
+:root {
+    --roxo: #4B1D63;            /* títulos, botão "Preciso de Ajuda" */
+    --magenta: #A30298;         /* destaques, aba ativa, ícones */
+    --magenta-vivo: #B5179E;    /* aba ativa, "PRECISO DE AJUDA", links "Ver todos →" */
+    --verde-agua: #32BCB0;      /* fim do degradê "Casa protegida" */
+    --lilas: #F3E5F1;           /* fundo de seções */
+    --lilas-forte: #F0DBF1;     /* faixas e destaques suaves */
+    --rosa-fundo: #F5C1F8;      /* início do degradê do fundo */
+    --texto: #1E1E1E;
+    --texto-secundario: #4A4453;
+    --cinza-rodape: #979393;
+    --branco: #FFFFFF;
+    --verde: #57D46E;           /* toggle ligado, aviso "ok" */
+    --verde-agua-escuro: #1FA58C; /* interruptor ligado e aviso "ok" (docs/proposta/) */
+    --rosa-alerta: #D9396A;     /* aviso vermelho: porta destrancada, janela aberta */
+    --amarelo-aviso: #C99A06;   /* aviso amarelo: sensor de movimento ligado */
+    --vermelho: #D62828;        /* erros e avisos de atenção */
+
+    --raio: 20px;               /* cantos arredondados dos cards */
+    --raio-pilula: 999px;       /* botões e abas em formato de pílula */
+    --sombra: 0 4px 14px rgba(75, 29, 99, 0.12);
+    --largura-maxima: 1800px;   /* os cards ocupam a largura toda (docs/proposta/) */
+}
+
+
+/* ---------------------------------------------------------------------
+   Regras gerais
+   --------------------------------------------------------------------- */
+
+/* box-sizing: border-box faz a largura incluir padding e borda,
+   o que deixa as medidas mais fáceis de prever. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--texto);
+    /* Fundo lilás bem claro, de cima para baixo (docs/proposta/). */
+    background: linear-gradient(180deg, #FBF4F9 0%, #F2E4F2 100%) fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;   /* empurra o rodapé para o fim da página */
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: var(--roxo);
+}
+
+/* Contorno visível ao navegar pelo teclado (Tab): acessibilidade. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--magenta);
+    outline-offset: 2px;
+}
+
+
+/* ---------------------------------------------------------------------
+   Tipografia (tamanhos do guia do Figma: H1 48, H2 32, H3 24, H4 18)
+   --------------------------------------------------------------------- */
+h1, h2, h3, h4 {
+    color: var(--roxo);
+    line-height: 1.2;
+    margin: 0 0 0.5em;
+}
+
+h1 { font-size: 48px; font-weight: 800; }
+h2 { font-size: 32px; font-weight: 700; }
+h3 { font-size: 24px; font-weight: 700; }
+h4 { font-size: 18px; font-weight: 600; }
+
+p {
+    margin: 0 0 1em;
+}
+
+
+/* ---------------------------------------------------------------------
+   Utilitários
+   --------------------------------------------------------------------- */
+
+/* Centraliza o conteúdo e limita a largura em telas grandes. */
+.container {
+    width: 100%;
+    max-width: var(--largura-maxima);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Esconde um elemento. O JavaScript liga/desliga esta classe
+   (ex.: o menu "Proteção E.L.O." só aparece para o perfil mulher). */
+.oculto {
+    display: none !important;
+}
+
+/* Texto lido por leitores de tela, mas invisível na tela. */
+.so-leitor-de-tela {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+.texto-secundario {
+    color: var(--texto-secundario);
+}
+
+/* Placeholders como [ADICIONAR TEXTO AQUI] ficam destacados para a
+   equipe encontrar fácil o que ainda falta preencher. */
+.placeholder {
+    background: #FFF3C4;
+    color: #6B5300;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+
+/* ---------------------------------------------------------------------
+   Telas menores (celular)
+   --------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    h1 { font-size: 34px; }
+    h2 { font-size: 26px; }
+    h3 { font-size: 20px; }
+
+    .container {
+        padding: 0 16px;
+    }
+}

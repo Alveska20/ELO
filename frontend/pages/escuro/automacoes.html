@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automações — ELO</title>
+    <link rel="stylesheet" href="/css/escuro.css">
+</head>
+<!-- Visual escuro — Automações. Layout: docs/figma/06-perfil-homem/06-automacoes-hifi.png
+     Números · cartões com interruptor · "Detalhes da automação" · "Atividade recente".
+     "Execuções hoje" e "Condição" não existem no sistema. -->
+<body class="escuro">
+    <div id="cabecalho"></div>
+
+    <main class="h-principal">
+        <div id="aviso-global"></div>
+
+        <header class="h-topo">
+            <div>
+                <h1 data-texto="automacoes.titulo">Automações</h1>
+                <p data-texto="automacoes.subtitulo">Crie e acompanhe as rotinas da sua casa.</p>
+            </div>
+            <div class="h-topo-acoes">
+                <button type="button" class="h-botao" id="botao-nova"><span data-texto="automacoes.botao_nova">+ Nova automação</span></button>
+                <span class="h-avatar" id="avatar" aria-hidden="true">U</span>
+            </div>
+        </header>
+
+        <div id="mensagem"></div>
+
+        <section class="h-grade h-grade-4" id="numeros" aria-label="Resumo das automações"></section>
+
+        <!-- Formulário de nova/editar (aparece só quando pedido) -->
+        <section class="h-cartao oculto h-espaco" id="caixa-formulario">
+            <h2 id="titulo-formulario">Nova automação</h2>
+            <form class="h-formulario" id="formulario-automacao">
+                <input type="hidden" id="automacao-id">
+                <div class="h-duas-colunas">
+                    <div class="h-campo">
+                        <label for="automacao-nome">Nome</label>
+                        <input type="text" id="automacao-nome" required maxlength="60">
+                    </div>
+                    <div class="h-campo">
+                        <label for="automacao-descricao">Descrição (opcional)</label>
+                        <input type="text" id="automacao-descricao" maxlength="200">
+                    </div>
+                    <div class="h-campo">
+                        <label for="automacao-gatilho">Gatilho</label>
+                        <select id="automacao-gatilho">
+                            <option value="manual">Manual (botão "Executar")</option>
+                            <option value="horario">Horário</option>
+                        </select>
+                    </div>
+                    <div class="h-campo oculto" id="campo-horario">
+                        <label for="automacao-horario">Horário (fica registrado; roda pelo botão "Executar")</label>
+                        <input type="time" id="automacao-horario">
+                    </div>
+                </div>
+                <fieldset class="h-campo" style="border: 1px solid var(--h-borda); border-radius: 8px; padding: 12px 16px;">
+                    <legend>Ações: marque os dispositivos e o estado de cada um</legend>
+                    <div id="lista-acoes"></div>
+                </fieldset>
+                <label class="h-campo-check"><input type="checkbox" id="automacao-verificar-portas"> Verificar portas e janelas</label>
+                <label class="h-campo-check"><input type="checkbox" id="automacao-ativo" checked> Ativa</label>
+                <div class="h-botoes">
+                    <button type="submit" class="h-botao">Salvar</button>
+                    <button type="button" class="h-botao h-botao-contorno" id="botao-cancelar">Cancelar</button>
+                </div>
+            </form>
+        </section>
+
+        <h2 style="font-size: 24px; font-weight: 500; margin: 32px 0 16px;" data-texto="automacoes.lista_titulo">Minhas automações</h2>
+
+        <div class="h-auto-layout">
+            <section class="h-grade h-grade-auto" id="lista" aria-live="polite" style="gap: 30px;"></section>
+
+            <aside class="h-cartao" id="painel" aria-live="polite"></aside>
+        </div>
+
+        <!-- Atividade recente: o sistema não guarda histórico; aparecem só as
+             execuções feitas nesta visita à página. -->
+        <section class="h-cartao h-espaco">
+            <h2 data-texto="automacoes.atividade_titulo">Atividade recente</h2>
+            <div id="atividade"></div>
+        </section>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/escuro/comum.js"></script>
+    <script src="/js/escuro/automacoes.js"></script>
+</body>
+</html>

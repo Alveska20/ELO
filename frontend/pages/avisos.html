@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avisos — E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- "Minha casa", aba Avisos. Visual: docs/proposta/05-avisos.png
+         Os avisos são calculados a partir do estado REAL dos dispositivos e
+         das portas (gerarAvisos em js/casa_comum.js). Nada é salvo. -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div class="titulo-pagina">
+            <h1>Avisos</h1>
+            <p>Estado da casa agora, a partir dos dispositivos cadastrados.</p>
+        </div>
+
+        <div id="abas-casa"></div>
+
+        <div id="mensagem"></div>
+
+        <div id="lista-avisos" aria-live="polite"></div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/casa_comum.js"></script>
+    <script src="/js/avisos.js"></script>
+</body>
+</html>

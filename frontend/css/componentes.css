@@ -1,0 +1,788 @@
+/* =====================================================================
+   E.L.O. — componentes.css
+   Peças que se repetem nas telas roxas: cabeçalho, abas de Minha casa,
+   rodapé, botões, cards, interruptor, formulários, mensagens, caminho
+   de navegação, sanfona, faixa de destaque, selos e o "Sair rápido".
+
+   Visual: imagens aprovadas em docs/proposta/, que seguem o
+   Figma roxo. Login e cadastro também usam .botao, .campo, .card,
+   .formulario e .mensagem (com o tema escuro por cima: tema-escuro.css).
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   Cabeçalho (montado pelo js/layout.js em todas as páginas roxas)
+   --------------------------------------------------------------------- */
+.cabecalho {
+    background: var(--branco);
+    border-bottom: 1px solid #EEDDEE;
+    position: sticky;   /* continua visível ao rolar a página */
+    top: 0;
+    z-index: 10;
+}
+
+.cabecalho-linha {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    min-height: 112px;
+}
+
+/* Logo horizontal (ícone + "E.L.O."), com cerca de 36 px de altura. */
+.cabecalho-marca img {
+    display: block;
+    height: 36px;
+    width: auto;
+}
+
+.menu {
+    flex: 1;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+}
+
+/* Itens do menu. A página atual ganha a pílula roxa. */
+.menu-link {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: var(--raio-pilula);
+    color: var(--roxo);
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.menu-link:hover {
+    background: var(--lilas);
+}
+
+.menu-link.ativo {
+    background: var(--roxo);
+    color: var(--branco);
+}
+
+/* Botão "Menu": só aparece no celular (ver o fim do arquivo). */
+.cabecalho .cabecalho-menu-botao {
+    display: none;
+}
+
+/* Avatar com a inicial: abre "Configurações" e "Sair".
+   É um <details>: o <summary> é o círculo e a lista aparece ao clicar. */
+.avatar-menu {
+    position: relative;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--lilas-forte);
+    color: var(--roxo);
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;   /* tira o triângulo padrão do <summary> */
+}
+
+.avatar::-webkit-details-marker {
+    display: none;
+}
+
+.avatar-opcoes {
+    position: absolute;
+    right: 0;
+    top: 64px;
+    min-width: 200px;
+    margin: 0;
+    padding: 8px;
+    list-style: none;
+    background: var(--branco);
+    border-radius: 16px;
+    box-shadow: var(--sombra);
+    z-index: 20;
+}
+
+.avatar-opcoes a,
+.avatar-opcoes button {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: var(--roxo);
+    text-align: left;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.avatar-opcoes a:hover,
+.avatar-opcoes button:hover,
+.avatar-opcoes a[aria-current="page"] {
+    background: var(--lilas);
+}
+
+
+/* ---------------------------------------------------------------------
+   Abas de Minha casa (Início · Câmeras · Aparelhos · Avisos · Tags · Rotinas)
+   --------------------------------------------------------------------- */
+.abas {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px;
+    border-radius: var(--raio-pilula);
+    background: var(--branco);
+    box-shadow: var(--sombra);
+    margin: 4px 0 32px;
+}
+
+.aba {
+    padding: 10px 26px;
+    border-radius: var(--raio-pilula);
+    color: var(--roxo);
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.aba:hover {
+    background: var(--lilas);
+}
+
+.aba.ativa {
+    background: var(--magenta-vivo);
+    color: var(--branco);
+}
+
+
+/* ---------------------------------------------------------------------
+   Rodapé de todas as telas roxas: logo completa (~64 px) + texto
+   --------------------------------------------------------------------- */
+.rodape {
+    background: var(--branco);
+    text-align: center;
+    padding: 36px 16px 40px;
+    color: var(--texto-secundario);
+    margin-top: 72px;
+}
+
+.rodape img {
+    height: 64px;
+    width: auto;
+    margin-bottom: 12px;
+}
+
+.rodape p {
+    margin: 2px 0;
+}
+
+
+/* ---------------------------------------------------------------------
+   Botões
+   --------------------------------------------------------------------- */
+.botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border: 2px solid var(--roxo);
+    border-radius: var(--raio-pilula);
+    background: var(--roxo);
+    color: var(--branco);
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao:hover {
+    opacity: 0.9;
+}
+
+.botao:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Variação vazada (só borda), como "Gerenciar cômodos" e "Iniciar teste". */
+.botao-contorno {
+    background: transparent;
+    color: var(--roxo);
+    border-color: var(--roxo);
+}
+
+.botao-pequeno {
+    padding: 6px 18px;
+    font-size: 15px;
+}
+
+.botao-perigo {
+    background: transparent;
+    color: var(--vermelho);
+    border-color: var(--vermelho);
+}
+
+/* "PRECISO DE AJUDA" do cabeçalho (só perfil mulher): pílula magenta. */
+.botao-ajuda {
+    white-space: nowrap;
+    background: var(--magenta-vivo);
+    border-color: var(--magenta-vivo);
+    text-transform: uppercase;
+    font-size: 18px;
+    padding: 12px 28px;
+}
+
+/* Botão que parece link (ex.: "Editar", "Sair" do avatar). */
+.botao-link {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--roxo);
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Link de texto em magenta com seta ("Ver todos →", "SAIBA MAIS →"). */
+.link-seta {
+    color: var(--magenta-vivo);
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.link-seta:hover {
+    text-decoration: underline;
+}
+
+
+/* ---------------------------------------------------------------------
+   Botão "Sair rápido" (js/saida_rapida.js), nas páginas da Proteção.
+   Contornado, no canto direito logo abaixo do cabeçalho (docs/proposta/
+   07 a 12). Fica FIXO na tela para continuar à mão ao rolar a página.
+   --------------------------------------------------------------------- */
+.saida-rapida {
+    position: fixed;
+    top: 128px;
+    right: 60px;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    max-width: 280px;
+}
+
+.saida-rapida-botao {
+    background: var(--branco);
+}
+
+/* A frase da limitação aparece ao passar o mouse ou focar o botão.
+   Fora disso fica escondida só na tela: o leitor de tela sempre a lê
+   (aria-describedby no botão). */
+.saida-rapida-dica {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    width: 280px;
+    background: var(--branco);
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+    padding: 8px 10px;
+    font-size: 12px;
+    color: var(--texto-secundario);
+    text-align: right;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.saida-rapida:hover .saida-rapida-dica,
+.saida-rapida-botao:focus-visible + .saida-rapida-dica {
+    opacity: 1;
+}
+
+
+/* ---------------------------------------------------------------------
+   Cards (caixas brancas com cantos arredondados e sombra)
+   --------------------------------------------------------------------- */
+.card {
+    background: var(--branco);
+    border-radius: 24px;
+    box-shadow: var(--sombra);
+    padding: 28px 30px;
+}
+
+.card h3 {
+    margin-bottom: 8px;
+}
+
+/* Grade de cards que se ajusta à largura da tela. */
+.grade {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+/* Grades fixas de 3 e 4 colunas (Câmeras, Aparelhos, Tags, Proteção). */
+.grade-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.grade-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.icone {
+    width: 48px;
+    height: 48px;
+}
+
+/* Círculo lilás com um ícone pequeno dentro (cards da Proteção, Aparelhos,
+   Tags e Fale conosco). */
+.icone-redondo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #FBE3F4;
+    color: var(--magenta-vivo);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.icone-redondo img {
+    width: 34px;
+    height: 34px;
+}
+
+/* Selos pequenos em pílula ("Só consulta", "Dados de exemplo",
+   "SIMULAÇÃO", "PROTEÇÃO E.L.O."). */
+.selo {
+    display: inline-block;
+    flex-shrink: 0;
+    padding: 4px 14px;
+    border-radius: var(--raio-pilula);
+    background: #FBE3F4;
+    color: var(--magenta);
+    font-weight: 700;
+    font-size: 15px;
+}
+
+
+/* Selo amarelo "Dados de exemplo" / "Em breve": avisa que o bloco mostra
+   dados fictícios ou uma função que ainda não existe. */
+.selo-exemplo {
+    display: inline-block;
+    flex-shrink: 0;
+    padding: 4px 12px;
+    border-radius: var(--raio-pilula);
+    background: #FBEFC4;
+    color: #5C4300;
+    font-weight: 700;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* Botão desativado com o selo "Em breve" dentro: fica legível, mas o
+   cursor mostra que não dá para clicar. */
+.botao-em-breve {
+    gap: 12px;
+}
+
+.botao-em-breve:disabled {
+    opacity: 1;
+}
+
+
+/* ---------------------------------------------------------------------
+   Interruptor liga/desliga
+   É um <button> com role="switch": leitores de tela anunciam
+   "ligado/desligado" pelo atributo aria-checked.
+   --------------------------------------------------------------------- */
+.interruptor {
+    position: relative;
+    width: 64px;
+    height: 36px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: var(--raio-pilula);
+    background: #DCC8DC;
+    cursor: pointer;
+}
+
+.interruptor::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--branco);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: left 0.2s;
+}
+
+.interruptor[aria-checked="true"] {
+    background: var(--verde-agua-escuro);
+}
+
+.interruptor[aria-checked="true"]::after {
+    left: 32px;
+}
+
+/* Interruptor de um bloco "Em breve": mostra o estado, mas não muda. */
+.interruptor:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+
+/* ---------------------------------------------------------------------
+   Formulários
+   --------------------------------------------------------------------- */
+.formulario {
+    display: grid;
+    gap: 16px;
+}
+
+.campo {
+    display: grid;
+    gap: 6px;
+}
+
+.campo label {
+    font-weight: 700;
+    color: var(--texto);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    font: inherit;
+    padding: 14px 16px;
+    border: 1px solid #EBD3EB;
+    border-radius: 14px;
+    background: #FBF5FA;
+}
+
+.campo-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* "Como você se identifica?" (Configurações): opções em pílula.
+   O círculo do rádio fica escondido só na tela (o teclado e o leitor de
+   tela continuam usando o rádio de verdade). */
+.opcoes-pilula {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.opcoes-pilula legend {
+    padding: 0;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.opcoes-pilula-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.opcoes-pilula label {
+    font-weight: 400;
+}
+
+.opcoes-pilula input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.opcoes-pilula span {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid var(--roxo);
+    border-radius: var(--raio-pilula);
+    color: var(--roxo);
+    cursor: pointer;
+}
+
+.opcoes-pilula input:checked + span {
+    background: var(--roxo);
+    color: var(--branco);
+    font-weight: 600;
+}
+
+.opcoes-pilula input:focus-visible + span {
+    outline: 3px solid var(--magenta);
+    outline-offset: 2px;
+}
+
+.formulario-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Painel do formulário de criar/editar, que abre na própria página. */
+.painel-formulario {
+    margin-bottom: 32px;
+}
+
+
+/* ---------------------------------------------------------------------
+   Mensagens (sucesso, erro, simulação). O api.js monta "mensagem-<tipo>".
+   --------------------------------------------------------------------- */
+.mensagem {
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin: 16px 0;
+    border-left: 6px solid;
+}
+
+.mensagem-sucesso {
+    background: #E6F8EF;
+    border-color: var(--verde-agua-escuro);
+}
+
+.mensagem-erro {
+    background: #FDE8EE;
+    border-color: var(--vermelho);
+}
+
+.mensagem-info {
+    background: var(--lilas);
+    border-color: var(--magenta);
+}
+
+.mensagem ul {
+    margin: 4px 0 0;
+    padding-left: 20px;
+}
+
+
+/* ---------------------------------------------------------------------
+   Caminho de navegação ("Proteção E.L.O. › Perguntas frequentes")
+   --------------------------------------------------------------------- */
+.breadcrumb {
+    margin: 0 0 12px;
+    font-size: 17px;
+    color: var(--texto-secundario);
+}
+
+.breadcrumb a {
+    color: var(--magenta-vivo);
+    text-decoration: none;
+}
+
+
+/* ---------------------------------------------------------------------
+   Lista que abre e fecha (FAQ, tipos de violência), feita com
+   <details> e <summary>: o próprio HTML abre/fecha, sem JavaScript.
+   --------------------------------------------------------------------- */
+.sanfona {
+    background: var(--branco);
+    border: 1px solid #F0DDEF;
+    border-radius: 16px;
+    margin-bottom: 16px;
+}
+
+.sanfona summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 28px;
+    cursor: pointer;
+    font-size: 21px;
+    color: var(--roxo);
+    list-style: none;   /* tira o triângulo padrão */
+}
+
+.sanfona summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Setinha à direita (feita com duas bordas de um quadradinho girado),
+   que vira para cima quando a sanfona abre. */
+.sanfona summary::after {
+    content: "";
+    flex-shrink: 0;
+    width: 9px;
+    height: 9px;
+    margin-left: 16px;
+    border-right: 2px solid var(--roxo);
+    border-bottom: 2px solid var(--roxo);
+    transform: rotate(45deg);
+    transition: transform 0.2s;
+}
+
+.sanfona[open] summary::after {
+    transform: rotate(-135deg);
+}
+
+.sanfona p {
+    padding: 0 28px 20px;
+    margin: 0;
+    font-size: 17px;
+}
+
+
+/* ---------------------------------------------------------------------
+   Faixa de destaque ("Prevenir também é um ato de coragem.") com o
+   coração à esquerda
+   --------------------------------------------------------------------- */
+.faixa {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    background: linear-gradient(90deg, #FBE3F4 0%, var(--branco) 100%);
+    border-radius: 24px;
+    box-shadow: var(--sombra);
+    padding: 28px 36px;
+    margin: 28px 0;
+}
+
+.faixa strong {
+    font-size: 22px;
+    color: var(--texto);
+}
+
+.faixa p {
+    margin: 0;
+    font-size: 18px;
+    color: var(--texto-secundario);
+}
+
+.faixa-icone {
+    color: var(--magenta);
+    font-size: 26px;
+}
+
+
+/* ---------------------------------------------------------------------
+   Aviso "Conteúdo informativo..." no fim das páginas da Proteção
+   --------------------------------------------------------------------- */
+.aviso-protecao {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid #EBD9EA;
+    color: var(--texto-secundario);
+    font-size: 17px;
+}
+
+
+/* ---------------------------------------------------------------------
+   Telas médias: o cabeçalho encolhe um pouco para caber numa linha
+   --------------------------------------------------------------------- */
+@media (max-width: 1300px) {
+    .cabecalho-linha {
+        gap: 16px;
+    }
+
+    .menu-link,
+    .aba {
+        padding: 8px 14px;
+        font-size: 17px;
+    }
+
+    .botao-ajuda {
+        padding: 10px 18px;
+        font-size: 15px;
+    }
+
+    .grade-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ---------------------------------------------------------------------
+   Celular: menu vira lista que abre pelo botão "Menu"
+   --------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .cabecalho-linha {
+        flex-wrap: wrap;
+        gap: 12px;
+        min-height: 72px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .cabecalho .cabecalho-menu-botao {
+        display: inline-flex;
+        margin-left: auto;
+    }
+
+    /* Menu fechado por padrão; o js/layout.js troca a classe "aberto". */
+    .menu {
+        display: none;
+        flex-basis: 100%;
+        order: 3;
+    }
+
+    .menu.aberto {
+        display: block;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .avatar {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+
+    .grade-3,
+    .grade-4 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Abas de Minha casa: numa linha só, rolando para o lado. */
+    .abas {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        max-width: 100%;
+    }
+
+    .aba {
+        white-space: nowrap;
+    }
+
+    /* No celular o "Sair rápido" fica no canto de baixo, sempre visível. */
+    .saida-rapida {
+        top: auto;
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .saida-rapida-dica {
+        top: auto;
+        bottom: 52px;
+    }
+}

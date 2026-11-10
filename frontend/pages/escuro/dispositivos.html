@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispositivos — ELO</title>
+    <link rel="stylesheet" href="/css/escuro.css">
+</head>
+<!-- Visual escuro — Dispositivos. Layout: docs/figma/06-perfil-homem/05-dispositivos-hifi.png
+     Números · filtros por categoria · cartões com interruptor · painel de detalhe.
+     Consumo, tensão, conexão, brilho, cor e histórico não existem no sistema. -->
+<body class="escuro">
+    <div id="cabecalho"></div>
+
+    <main class="h-principal">
+        <div id="aviso-global"></div>
+
+        <header class="h-topo">
+            <div>
+                <h1 data-texto="dispositivos.titulo">Dispositivos</h1>
+                <p data-texto="dispositivos.subtitulo">Controle todos os dispositivos conectados à sua casa.</p>
+            </div>
+            <div class="h-topo-acoes">
+                <button type="button" class="h-botao" id="botao-novo">+ Novo dispositivo</button>
+                <span class="h-avatar" id="avatar" aria-hidden="true">U</span>
+            </div>
+        </header>
+
+        <div id="mensagem"></div>
+
+        <section class="h-grade h-grade-4" id="numeros" aria-label="Resumo dos dispositivos"></section>
+
+        <div class="h-filtros h-espaco" id="filtros" role="group" aria-label="Filtrar por categoria"></div>
+
+        <!-- Formulário de novo/editar (aparece só quando pedido) -->
+        <section class="h-cartao oculto" id="caixa-formulario" style="margin-bottom: 24px;">
+            <h2 id="titulo-formulario">Novo dispositivo</h2>
+            <form class="h-formulario" id="formulario-dispositivo">
+                <input type="hidden" id="dispositivo-id">
+                <div class="h-duas-colunas">
+                    <div class="h-campo">
+                        <label for="dispositivo-nome">Nome</label>
+                        <input type="text" id="dispositivo-nome" required maxlength="60">
+                    </div>
+                    <div class="h-campo">
+                        <label for="dispositivo-tipo">Tipo</label>
+                        <select id="dispositivo-tipo"></select>
+                    </div>
+                    <div class="h-campo">
+                        <label for="dispositivo-comodo">Ambiente</label>
+                        <select id="dispositivo-comodo"></select>
+                    </div>
+                    <div class="h-campo oculto" id="campo-temperatura">
+                        <label for="dispositivo-temperatura">Temperatura (16 a 30 °C)</label>
+                        <input type="number" id="dispositivo-temperatura" min="16" max="30">
+                    </div>
+                </div>
+                <div class="h-botoes">
+                    <button type="submit" class="h-botao">Salvar</button>
+                    <button type="button" class="h-botao h-botao-contorno" id="botao-cancelar">Cancelar</button>
+                </div>
+            </form>
+        </section>
+
+        <div class="h-disp-layout">
+            <!-- Lista -->
+            <section class="h-cartao">
+                <div class="h-linha-titulo">
+                    <h2 style="font-size: 18px;"><span data-texto="dispositivos.lista_titulo">Todos os dispositivos</span> (<span id="contagem-lista">0</span>)</h2>
+                    <div class="h-busca">
+                        <label class="so-leitor-de-tela" for="busca">Buscar dispositivo</label>
+                        <input type="search" id="busca" placeholder="Buscar...">
+                    </div>
+                </div>
+                <div class="h-disp-grade" id="lista" aria-live="polite"></div>
+            </section>
+
+            <!-- Painel de detalhe do dispositivo escolhido -->
+            <aside class="h-cartao" id="painel" aria-live="polite"></aside>
+        </div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/escuro/comum.js"></script>
+    <script src="/js/escuro/dispositivos.js"></script>
+</body>
+</html>

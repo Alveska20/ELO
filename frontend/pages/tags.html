@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Tags — E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- "Minha casa", aba Tags. Visual: docs/proposta/06-tags.png
+         Tags são atalhos físicos (tipo NFC). A leitura é SIMULADA pelo
+         botão "Iniciar teste" de cada cartão. -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div class="titulo-com-botao">
+            <div class="titulo-pagina">
+                <h1>Minhas Tags</h1>
+                <p>Atalhos físicos para abrir partes do E.L.O.</p>
+            </div>
+            <button type="button" class="botao" id="botao-nova">+ Nova Tag</button>
+        </div>
+
+        <div id="abas-casa"></div>
+
+        <div id="mensagem" aria-live="polite"></div>
+
+        <!-- Casa vazia (htmlCasaVazia em casa_comum.js) quando não há Tags -->
+        <div id="casa-vazia"></div>
+
+        <!-- Formulário de Tag (nova ou editar): abre por "+ Nova Tag" ou "Editar" -->
+        <section class="card painel-formulario oculto" id="painel-formulario">
+            <h3 id="titulo-formulario">Nova Tag</h3>
+            <form class="formulario" id="formulario-tag">
+                <input type="hidden" id="tag-id">
+                <div class="campo">
+                    <label for="tag-nome">Nome</label>
+                    <input type="text" id="tag-nome" placeholder="Ex.: Tag da cabeceira" required>
+                </div>
+                <div class="campo">
+                    <label for="tag-codigo">Código (o que o chip "transmite")</label>
+                    <input type="text" id="tag-codigo" placeholder="Ex.: CABECEIRA" required>
+                </div>
+                <div class="campo">
+                    <label for="tag-funcao">Função</label>
+                    <select id="tag-funcao">
+                        <option value="abrir_dashboard">Abrir Minha casa</option>
+                        <option value="abrir_comodo">Abrir um cômodo</option>
+                        <option value="abrir_protecao">Abrir a Proteção E.L.O.</option>
+                        <option value="abrir_emergencia">Abrir "Preciso de ajuda"</option>
+                    </select>
+                    <small class="texto-secundario">Proteção e "Preciso de ajuda" só abrem para quem tem acesso à Proteção E.L.O.</small>
+                </div>
+                <div class="campo oculto" id="campo-comodo">
+                    <label for="tag-comodo">Cômodo que a Tag abre</label>
+                    <select id="tag-comodo"></select>
+                </div>
+                <label class="campo-checkbox">
+                    <input type="checkbox" id="tag-ativo" checked>
+                    Tag ativa
+                </label>
+                <div class="formulario-botoes">
+                    <button type="submit" class="botao">Salvar</button>
+                    <button type="button" class="botao botao-contorno" id="botao-cancelar">Cancelar</button>
+                    <button type="button" class="botao botao-perigo oculto" id="botao-excluir">Excluir</button>
+                </div>
+            </form>
+        </section>
+
+        <div class="grade-3" id="lista-tags"></div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/casa_comum.js"></script>
+    <script src="/js/tags.js"></script>
+</body>
+</html>

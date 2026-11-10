@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos de confiança — Proteção E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- Visual: docs/proposta/11-contatos-confianca.png
+         Plano de segurança: doc da equipe, seção 5 (as marcações NÃO são salvas).
+         O aviso de consentimento aparece antes do primeiro cadastro. -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div id="breadcrumb"></div>
+        <div class="titulo-pagina">
+            <h1>Contatos de confiança</h1>
+            <p id="subtitulo"></p>
+        </div>
+
+        <div id="mensagem"></div>
+
+        <div class="contatos-layout">
+            <section class="card plano-seguranca">
+                <h2>Plano de segurança</h2>
+                <p class="texto-secundario" id="plano-texto"></p>
+                <!-- Caixas de marcar só nesta tela: nada é enviado nem salvo -->
+                <div id="plano-itens"></div>
+            </section>
+
+            <section>
+                <h2 class="titulo-secao">Seus contatos de confiança</h2>
+
+                <!-- Aviso de consentimento: aparece antes do primeiro cadastro -->
+                <div class="card oculto" id="caixa-consentimento">
+                    <div class="mensagem mensagem-info">
+                        <strong>Antes de cadastrar, leia:</strong>
+                        <p style="margin: 4px 0 0;" id="texto-consentimento"></p>
+                    </div>
+                    <button type="button" class="botao" id="botao-aceitar">Li e aceito</button>
+                </div>
+
+                <div class="oculto" id="area-contatos">
+                    <div id="lista-contatos"></div>
+
+                    <button type="button" class="botao" id="botao-adicionar">+ Adicionar contato</button>
+
+                    <!-- Formulário (novo ou editar): abre pelo "+ Adicionar contato" ou pelo lápis -->
+                    <form class="card formulario oculto" id="formulario-contato" style="margin-top: 16px;">
+                        <h3 id="titulo-formulario">Adicionar contato</h3>
+                        <input type="hidden" id="contato-id">
+                        <div class="campo">
+                            <label for="contato-nome">Nome</label>
+                            <input type="text" id="contato-nome" required>
+                        </div>
+                        <div class="campo">
+                            <label for="contato-telefone">Telefone</label>
+                            <input type="tel" id="contato-telefone" placeholder="(XX) XXXXX-XXXX" required>
+                        </div>
+                        <div class="campo">
+                            <label for="contato-relacao">Relação (opcional)</label>
+                            <input type="text" id="contato-relacao" placeholder="Ex.: Amiga">
+                        </div>
+                        <div class="formulario-botoes">
+                            <button type="submit" class="botao">Salvar contato</button>
+                            <button type="button" class="botao botao-contorno" id="botao-cancelar">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/saida_rapida.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/contatos.js"></script>
+</body>
+</html>

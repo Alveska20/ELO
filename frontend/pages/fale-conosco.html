@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale conosco — E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- Fale conosco. Visual: docs/proposta/13-fale-conosco.png
+         Os contatos são DADOS DE EXEMPLO (selo na tela): o projeto não tem
+         e-mail, telefone nem endereço reais.
+         O envio é SIMULADO: o formulário não chama o backend e nada é salvo. -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div class="fale-layout">
+            <section>
+                <p class="breadcrumb">Fale conosco</p>
+                <h1>Fale com a gente.</h1>
+                <p class="fale-texto">Estamos aqui para te ouvir. Se você precisa de ajuda, tem dúvidas ou quer saber
+                   mais sobre o E.L.O., entre em contato. Sua mensagem é muito importante.</p>
+
+                <span class="selo">Dados de exemplo</span>
+                <ul class="fale-contatos">
+                    <li><span class="icone-redondo" aria-hidden="true">@</span>
+                        <div><strong>E-mail</strong><span>contato@exemplo.com</span></div></li>
+                    <li><span class="icone-redondo" aria-hidden="true">☎</span>
+                        <div><strong>Telefone</strong><span>(11) 0000-0000</span></div></li>
+                    <li><span class="icone-redondo" aria-hidden="true">⌂</span>
+                        <div><strong>Endereço</strong><span>Rua de Exemplo, 123 — Cidade/UF</span></div></li>
+                </ul>
+            </section>
+
+            <section class="card">
+                <form class="formulario" id="formulario-fale">
+                    <div class="campo">
+                        <label for="fale-nome">Nome</label>
+                        <input type="text" id="fale-nome" required>
+                    </div>
+                    <div class="campo">
+                        <label for="fale-email">E-mail</label>
+                        <input type="email" id="fale-email" required>
+                    </div>
+                    <div class="campo">
+                        <label for="fale-mensagem">Mensagem</label>
+                        <textarea id="fale-mensagem" rows="7" required></textarea>
+                    </div>
+                    <button type="submit" class="botao botao-largo">Enviar mensagem</button>
+                    <p class="texto-secundario centro">[SIMULAÇÃO] Nenhuma mensagem é enviada nem salva.</p>
+                    <div id="mensagem" aria-live="polite"></div>
+                </form>
+            </section>
+        </div>
+
+        <div class="faixa">
+            <span class="faixa-icone" aria-hidden="true">❤</span>
+            <div>
+                <p><strong>Juntas por um futuro mais seguro.</strong></p>
+                <p>O E.L.O. existe para você. Conte sempre conosco.</p>
+            </div>
+        </div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/fale_conosco.js"></script>
+</body>
+</html>

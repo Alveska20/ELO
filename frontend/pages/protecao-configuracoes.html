@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações de emergência — Proteção E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- Layout simples (não existe no Figma). -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div id="breadcrumb"></div>
+        <div class="titulo-pagina">
+            <h1>Configurações de emergência</h1>
+            <p>Escolha o que o botão "PRECISO DE AJUDA" deve simular.
+               Nesta versão nada é enviado de verdade: sem ligações, SMS ou localização real.</p>
+        </div>
+
+        <div id="mensagem"></div>
+
+        <section class="card" style="max-width: 640px;">
+            <form class="formulario" id="formulario-configuracoes">
+                <label class="campo-checkbox">
+                    <input type="checkbox" id="acao-alertar">
+                    Avisar meus contatos de confiança (simulação)
+                </label>
+                <label class="campo-checkbox">
+                    <input type="checkbox" id="acao-localizacao">
+                    Compartilhar minha localização com eles (simulação)
+                </label>
+                <div class="formulario-botoes">
+                    <button type="submit" class="botao">Salvar</button>
+                    <a class="botao botao-contorno" href="/pages/protecao-ajuda.html">Ir para "Preciso de ajuda"</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/saida_rapida.js"></script>
+    <script src="/js/layout.js"></script>
+    <script>
+        /* Configurações de emergência (somente perfil mulher):
+             ler   GET /api/emergency            -> { configuracoes, contatos }
+             salvar PUT /api/emergency/settings  {"acao_alertar_contatos", "acao_compartilhar_localizacao"}
+           O JS é curto, por isso fica aqui mesmo. */
+        const caixaMensagemConfig = document.getElementById("mensagem");
+        const caixaAlertar = document.getElementById("acao-alertar");
+        const caixaLocalizacao = document.getElementById("acao-localizacao");
+
+        async function salvarConfiguracoes(evento) {
+            evento.preventDefault();
+            const resposta = await chamarApi("PUT", "/api/emergency/settings", {
+                acao_alertar_contatos: caixaAlertar.checked,
+                acao_compartilhar_localizacao: caixaLocalizacao.checked,
+            });
+            if (resposta.ok) {
+                mostrarMensagem(caixaMensagemConfig, "Configurações salvas.", "sucesso");
+            } else {
+                mostrarMensagem(caixaMensagemConfig, resposta.dados.erro, "erro");
+            }
+        }
+
+        async function iniciarConfiguracoes() {
+            const pagina = await montarPagina({
+                paginaAtual: "protecao", exige: "mulher", protecao: true,
+                breadcrumb: "Configurações de emergência",
+            });
+            if (!pagina) {
+                return;
+            }
+            const resposta = await chamarApi("GET", "/api/emergency");
+            if (resposta.ok) {
+                caixaAlertar.checked = resposta.dados.configuracoes.acao_alertar_contatos;
+                caixaLocalizacao.checked = resposta.dados.configuracoes.acao_compartilhar_localizacao;
+            }
+            document.getElementById("formulario-configuracoes").addEventListener("submit", salvarConfiguracoes);
+        }
+
+        iniciarConfiguracoes();
+    </script>
+</body>
+</html>

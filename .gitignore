@@ -1,0 +1,25 @@
+# Ambiente virtual do Python (cada pessoa cria o seu com "python -m venv venv")
+venv/
+.venv/
+env/
+
+# Arquivos gerados automaticamente pelo Python
+__pycache__/
+*.pyc
+
+# Configurações com senhas e chaves (o modelo é o .env.example)
+.env
+
+# Banco de dados SQLite (é recriado pelo seed.py)
+*.db
+*.sqlite3
+backend/instance/
+
+# Cache do pytest
+.pytest_cache/
+
+# Configurações locais de editores e do sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

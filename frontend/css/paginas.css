@@ -1,0 +1,1113 @@
+/* =====================================================================
+   E.L.O. — paginas.css
+   Detalhes de cada tela roxa. Cada bloco diz qual imagem de
+   docs/proposta/ serviu de referência, ou "sem imagem" para as
+   telas que usam só os componentes (Rotinas, Cômodos, Cômodo,
+   Orientações e Configurações de emergência).
+
+   Login e Cadastro usam o visual escuro: o CSS deles está em
+   css/tema-escuro.css.
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   Títulos das páginas
+   --------------------------------------------------------------------- */
+main.container {
+    padding-top: 48px;
+}
+
+.titulo-pagina h1 {
+    margin-bottom: 12px;
+}
+
+.titulo-pagina p {
+    font-size: 20px;
+    color: var(--texto-secundario);
+    margin-bottom: 32px;
+}
+
+/* Título da página com botões à direita ("+ Novo aparelho"). */
+.titulo-com-botao {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+/* Título de uma seção dentro da página ("Seus contatos de confiança"). */
+.titulo-secao,
+.cabecalho-secao h2 {
+    font-size: 26px;
+    margin: 0 0 20px;
+}
+
+.cabecalho-secao {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0 16px;
+}
+
+/* Título de um bloco com o link "Ver todos →" no canto. */
+.bloco-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.bloco-titulo h2 {
+    font-size: 26px;
+    margin: 0;
+}
+
+.centro {
+    text-align: center;
+}
+
+
+/* ---------------------------------------------------------------------
+   Minha casa — Início (01-minha-casa-inicio.png)
+   --------------------------------------------------------------------- */
+
+/* Faixa "Casa protegida": degradê roxo → magenta → verde-água. */
+.faixa-status {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 36px 42px;
+    border-radius: 30px;
+    color: var(--branco);
+    background: linear-gradient(90deg, var(--roxo) 0%, var(--magenta-vivo) 60%, #20A894 100%);
+}
+
+.faixa-status h2 {
+    color: var(--branco);
+    font-size: 34px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.faixa-status p {
+    margin: 4px 0 0;
+    font-size: 19px;
+}
+
+/* Em casa / Fora / Desarmar (simulação: só trocam o texto da faixa). */
+.modos {
+    display: inline-flex;
+    gap: 4px;
+    padding: 6px;
+    border-radius: var(--raio-pilula);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.modo {
+    padding: 10px 22px;
+    border: none;
+    border-radius: var(--raio-pilula);
+    background: transparent;
+    color: var(--branco);
+    font: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.modo.ativo {
+    background: var(--branco);
+    color: var(--roxo);
+}
+
+/* Os 4 números. */
+.numeros-casa {
+    margin: 32px 0;
+}
+
+.card-numero {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--texto-secundario);
+}
+
+.card-numero:hover {
+    box-shadow: 0 6px 20px rgba(75, 29, 99, 0.2);
+}
+
+.rotulo-numero {
+    font-size: 17px;
+}
+
+.card-numero .numero {
+    display: block;
+    font-size: 46px;
+    font-weight: 800;
+    color: var(--roxo);
+    line-height: 1.2;
+    margin: 6px 0;
+}
+
+.detalhe-numero {
+    color: #1F7F73;   /* verde-água escuro: contraste bom no fundo branco */
+    font-size: 17px;
+}
+
+/* Duas colunas: "Controles rápidos + Ambientes" e "Avisos + Rotinas". */
+.minha-casa-grade {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Controles rápidos: quadros com o nome e o interruptor, 3 por linha. */
+.controles-rapidos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.controle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    border: 1px solid var(--lilas-forte);
+    border-radius: 16px;
+    font-size: 19px;
+}
+
+/* Ambientes da casa: cômodos + "+ Novo cômodo". */
+.ambientes-mini {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.ambiente-mini {
+    display: block;
+    min-height: 120px;
+    padding: 18px;
+    border: 1px solid var(--lilas-forte);
+    border-radius: 16px;
+    color: var(--texto-secundario);
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.ambiente-mini strong {
+    display: block;
+    color: var(--texto);
+    font-size: 19px;
+}
+
+.ambiente-mini:hover {
+    border-color: var(--magenta-vivo);
+}
+
+.ambiente-novo {
+    border-style: dashed;
+    color: var(--magenta-vivo);
+    font-weight: 700;
+    font-size: 19px;
+}
+
+/* Uma rotina (automação) com o botão "Executar". */
+.rotina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    border: 1px solid var(--lilas-forte);
+    border-radius: 16px;
+}
+
+.rotina strong {
+    display: block;
+    font-size: 21px;
+}
+
+.rotina span {
+    color: var(--texto-secundario);
+}
+
+.rotina .botao {
+    white-space: nowrap;
+}
+
+
+/* Segunda linha: "Consumo de energia" e "Moradores" (dados de exemplo). */
+.minha-casa-grade-baixo {
+    margin-top: 24px;
+    align-items: stretch;
+}
+
+.consumo-numeros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 28px;
+}
+
+.consumo-numeros span {
+    display: block;
+    color: var(--texto-secundario);
+}
+
+.consumo-numeros strong {
+    color: var(--roxo);
+    font-size: 38px;
+}
+
+/* Gráfico de 7 barras; a altura vem do JS (proporcional ao maior dia). */
+.barras-consumo {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 14px;
+    align-items: end;
+    height: 190px;
+}
+
+.barra-consumo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
+    height: 100%;
+    gap: 8px;
+    text-align: center;
+}
+
+.barra-consumo span {
+    border-radius: 10px 10px 4px 4px;
+    background: linear-gradient(180deg, var(--magenta-vivo), var(--roxo));
+}
+
+.barra-consumo.hoje span {
+    background: var(--verde-agua-escuro);
+}
+
+.barra-consumo small {
+    color: var(--texto-secundario);
+    font-size: 15px;
+}
+
+/* Moradores: inicial no círculo · nome e papel. */
+.morador {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--lilas-forte);
+}
+
+.morador:last-of-type {
+    border-bottom: none;
+    margin-bottom: 16px;
+}
+
+.morador-inicial {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--lilas-forte);
+    color: var(--roxo);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.morador strong {
+    display: block;
+    color: var(--roxo);
+    font-size: 21px;
+}
+
+.morador span {
+    color: var(--texto-secundario);
+}
+
+
+/* ---------------------------------------------------------------------
+   Avisos (05-avisos.png e o bloco "Avisos" de Minha casa)
+   Bolinha e borda: verde = ok, vermelho = alerta, amarelo = atenção.
+   --------------------------------------------------------------------- */
+.aviso-linha {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--branco);
+    border-radius: 16px;
+    border-left: 8px solid var(--rosa-alerta);
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    font-size: 20px;
+}
+
+/* Dentro de um card (Minha casa) a linha fica lilás e sem borda. */
+.card .aviso-linha {
+    background: var(--lilas);
+    border-left: none;
+    font-size: 19px;
+}
+
+.aviso-linha .bolinha {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--rosa-alerta);
+}
+
+.aviso-linha.ok {
+    border-left-color: var(--verde-agua-escuro);
+}
+
+.aviso-linha.ok .bolinha {
+    background: var(--verde-agua-escuro);
+}
+
+.aviso-linha.atencao {
+    border-left-color: var(--amarelo-aviso);
+}
+
+.aviso-linha.atencao .bolinha {
+    background: var(--amarelo-aviso);
+}
+
+
+/* ---------------------------------------------------------------------
+   Casa vazia (02-minha-casa-vazia.png)
+   Mesma mensagem em Minha casa, Cômodos, Aparelhos, Rotinas e Tags
+   (htmlCasaVazia em js/casa_comum.js).
+   --------------------------------------------------------------------- */
+.casa-vazia {
+    grid-column: 1 / -1;   /* dentro de uma grade, ocupa a linha inteira */
+    text-align: center;
+    padding: 64px 60px;
+}
+
+.casa-vazia h2 {
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.casa-vazia > p {
+    max-width: 840px;
+    margin: 0 auto 40px;
+    font-size: 22px;
+    color: var(--texto-secundario);
+}
+
+.passos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 0 0 40px;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+
+.passo {
+    padding: 26px 30px;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    box-shadow: var(--sombra);
+    color: #8C7A99;   /* passo que ainda não chegou: mais apagado */
+}
+
+.passo strong {
+    display: block;
+    margin: 14px 0 12px;
+    font-size: 26px;
+    color: #8C6A9E;
+}
+
+.passo.atual {
+    border-color: var(--magenta-vivo);
+    color: var(--texto-secundario);
+}
+
+.passo.atual strong,
+.passo.feito strong {
+    color: var(--roxo);
+}
+
+.passo-etiqueta {
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: var(--raio-pilula);
+    background: #FBE3F4;
+    color: var(--magenta);
+    font-weight: 700;
+    font-size: 15px;
+}
+
+
+/* ---------------------------------------------------------------------
+   Aparelhos (04-aparelhos.png)
+   --------------------------------------------------------------------- */
+
+/* Filtros em pílula: Todos · Luzes · Climatização · ... · Portas */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 28px;
+}
+
+.filtro {
+    padding: 10px 22px;
+    border: 2px solid var(--roxo);
+    border-radius: var(--raio-pilula);
+    background: transparent;
+    color: var(--roxo);
+    font: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.filtro.ativo {
+    background: var(--roxo);
+    color: var(--branco);
+}
+
+/* Card de aparelho: círculo com ícone · nome e estado · interruptor/selo */
+.card-aparelho {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 26px 30px;
+}
+
+.card-aparelho .icone-redondo {
+    width: 60px;
+    height: 60px;
+}
+
+.card-aparelho-texto {
+    flex: 1;
+}
+
+.card-aparelho-texto strong {
+    display: block;
+    font-size: 22px;
+}
+
+.card-aparelho-texto span {
+    display: block;
+    color: var(--texto-secundario);
+    font-size: 18px;
+}
+
+/* Link discreto "Editar" (abre o formulário; "Excluir" fica lá dentro). */
+.link-editar {
+    font-size: 14px;
+    color: var(--texto-secundario);
+}
+
+
+/* ---------------------------------------------------------------------
+   Câmeras (03-cameras.png) — SIMULADAS, sem vídeo
+   --------------------------------------------------------------------- */
+.card-camera {
+    padding: 26px 30px 18px;
+}
+
+/* Área roxa listrada no lugar do vídeo. */
+.camera-imagem {
+    position: relative;
+    height: 210px;
+    border-radius: 16px;
+    background: repeating-linear-gradient(135deg, #5A2378 0 22px, #66297F 22px 44px);
+}
+
+/* "background" (e não "background-color"): precisa cobrir as listras. */
+.camera-imagem.desligada {
+    background: #3A3340;
+}
+
+.camera-selo {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--branco);
+    border-radius: var(--raio-pilula);
+    padding: 2px 12px;
+    color: var(--magenta);
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.camera-data {
+    position: absolute;
+    bottom: 14px;
+    left: 16px;
+    color: var(--branco);
+    font-size: 16px;
+}
+
+.card-camera-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.card-camera-linha strong {
+    font-size: 22px;
+}
+
+/* O "+" tracejado para adicionar uma câmera. */
+.card-adicionar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    border: 2px dashed #E3C9E2;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.35);
+    color: var(--magenta-vivo);
+    font-size: 64px;
+    cursor: pointer;
+}
+
+
+/* ---------------------------------------------------------------------
+   Tags (06-tags.png)
+   --------------------------------------------------------------------- */
+.card-tag-topo {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.card-tag-topo strong {
+    display: block;
+    font-size: 22px;
+}
+
+.card-tag-topo span:not(.icone-redondo) {
+    color: var(--texto-secundario);
+    font-size: 18px;
+}
+
+.card-tag p {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.card-tag-acoes {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+/* O interruptor vai para a direita. */
+.card-tag-acoes .interruptor {
+    margin-left: auto;
+}
+
+.card-tag.inativa {
+    opacity: 0.6;
+}
+
+
+/* ---------------------------------------------------------------------
+   Rotinas (sem imagem): ações dos cartões e etiquetas de status
+   --------------------------------------------------------------------- */
+.card-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+/* Etiqueta pequena de status (Ativa / Desativada...). */
+.etiqueta {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: var(--raio-pilula);
+    background: var(--lilas);
+    color: var(--roxo);
+    font-size: 13px;
+}
+
+.etiqueta.atencao {
+    background: #FDE8EE;
+    color: var(--vermelho);
+}
+
+
+/* ---------------------------------------------------------------------
+   Proteção E.L.O. — início (07-protecao-inicio.png)
+   --------------------------------------------------------------------- */
+.protecao-topo {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 32px;
+}
+
+.protecao-topo-texto {
+    flex: 1;
+}
+
+.protecao-topo h1 {
+    font-size: 64px;
+    margin: 16px 0;
+}
+
+.protecao-topo-texto p {
+    font-size: 22px;
+    color: var(--texto-secundario);
+    max-width: 960px;
+}
+
+.protecao-destaque strong {
+    color: var(--roxo);
+}
+
+.protecao-ilustracao {
+    width: 34%;
+    max-width: 560px;
+}
+
+.botao-grande {
+    padding: 14px 30px;
+    font-size: 19px;
+}
+
+/* Cards com o círculo, título, texto e "SAIBA MAIS →" (Proteção, Orientações
+   e serviços do Preciso de ajuda). */
+.card-atalho {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--texto-secundario);
+}
+
+.card-atalho h3 {
+    color: var(--roxo);
+    font-size: 24px;
+    margin: 18px 0 8px;
+}
+
+.card-atalho p {
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.card-atalho:hover {
+    box-shadow: 0 6px 20px rgba(75, 29, 99, 0.2);
+}
+
+
+/* ---------------------------------------------------------------------
+   Situações de violência e Perguntas frequentes (08 e 09)
+   --------------------------------------------------------------------- */
+.faixa-lilas {
+    background: #FBE3F4;
+}
+
+.nota-editorial {
+    color: var(--texto-secundario);
+    font-size: 15px;
+}
+
+
+/* ---------------------------------------------------------------------
+   Quiz (10-quiz.png)
+   --------------------------------------------------------------------- */
+.quiz-progresso {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+    font-size: 19px;
+}
+
+.quiz-barra {
+    width: 630px;
+    max-width: 60%;
+    height: 12px;
+    border-radius: var(--raio-pilula);
+    background: #EBD3EB;
+    overflow: hidden;
+}
+
+.quiz-barra span {
+    display: block;
+    height: 100%;
+    background: var(--magenta-vivo);
+}
+
+.quiz-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.quiz-titulo {
+    font-size: 26px;
+}
+
+.quiz-situacao {
+    font-size: 22px;
+    color: var(--texto);
+}
+
+.quiz-alternativas {
+    display: grid;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.quiz-alternativa {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+    padding: 18px 24px;
+    border: 1px solid #E8CBE6;
+    border-radius: var(--raio-pilula);
+    background: var(--branco);
+    font: inherit;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.quiz-circulo {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border: 3px solid var(--magenta-vivo);
+    border-radius: 50%;
+}
+
+.quiz-alternativa:hover:not(:disabled) {
+    border-color: var(--magenta-vivo);
+}
+
+.quiz-alternativa.certa {
+    border-color: var(--verde-agua-escuro);
+    background: #E6F8EF;
+}
+
+.quiz-alternativa.errada {
+    border-color: var(--vermelho);
+    background: #FDE8EE;
+}
+
+.quiz-acolhimento {
+    background: #FBE3F4;
+    font-size: 19px;
+}
+
+.quiz-acolhimento p {
+    margin: 40px 0 20px;
+}
+
+
+/* ---------------------------------------------------------------------
+   Contatos de confiança (11-contatos-confianca.png)
+   --------------------------------------------------------------------- */
+.contatos-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.plano-seguranca h2 {
+    font-size: 26px;
+}
+
+.plano-item {
+    margin: 18px 0;
+    font-size: 20px;
+}
+
+.plano-item input {
+    width: 24px;
+    height: 24px;
+    accent-color: var(--magenta-vivo);
+}
+
+.contato {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+}
+
+.avatar-contato {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--lilas-forte);
+    color: var(--roxo);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.contato-texto {
+    flex: 1;
+}
+
+.contato-texto strong {
+    display: block;
+    font-size: 22px;
+}
+
+.contato-texto span {
+    color: var(--texto-secundario);
+    font-size: 18px;
+}
+
+/* Botões redondos de editar (lápis) e excluir (lixeira). */
+.botao-redondo {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    border: 1px solid var(--lilas-forte);
+    border-radius: 50%;
+    background: var(--branco);
+    color: var(--roxo);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.botao-redondo:hover {
+    background: var(--lilas);
+}
+
+
+/* ---------------------------------------------------------------------
+   Preciso de ajuda (12-preciso-de-ajuda.png)
+   --------------------------------------------------------------------- */
+.canal {
+    margin-bottom: 20px;
+}
+
+.canal-linha {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.canal-icone {
+    width: 84px;
+    height: 84px;
+    background: var(--magenta-vivo);
+    color: var(--branco);
+    font-size: 34px;
+}
+
+.canal-texto {
+    flex: 1;
+}
+
+.canal-texto h2 {
+    margin: 0 0 4px;
+}
+
+.canal-texto p {
+    margin: 0;
+}
+
+.canal-nome {
+    font-size: 22px;
+}
+
+/* A seta "→" abre os detalhes do canal (o número nunca vira ligação). */
+.botao-seta {
+    border: none;
+    background: none;
+    color: var(--roxo);
+    font-size: 28px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 50%;
+}
+
+.botao-seta:hover {
+    background: var(--lilas);
+}
+
+.canal-detalhes {
+    margin: 16px 0 0 112px;
+    font-size: 17px;
+}
+
+.avisar-contatos {
+    margin-top: 28px;
+}
+
+.avisar-contatos h2 {
+    font-size: 26px;
+}
+
+.avisar-contatos .texto-secundario {
+    margin-top: 18px;
+}
+
+
+/* ---------------------------------------------------------------------
+   Fale conosco (13-fale-conosco.png)
+   --------------------------------------------------------------------- */
+.fale-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.fale-texto {
+    font-size: 22px;
+    color: var(--texto-secundario);
+    margin-bottom: 28px;
+}
+
+.fale-contatos {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+}
+
+.fale-contatos li {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 24px;
+}
+
+.fale-contatos strong {
+    display: block;
+    font-size: 22px;
+}
+
+.fale-contatos span:not(.icone-redondo) {
+    color: var(--texto-secundario);
+    font-size: 19px;
+}
+
+.botao-largo {
+    width: 100%;
+}
+
+
+/* ---------------------------------------------------------------------
+   Configurações (14-configuracoes.png)
+   Duas colunas de cards; os blocos "Em breve" ficam desativados.
+   --------------------------------------------------------------------- */
+.configuracoes-grade {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.configuracoes-coluna {
+    display: grid;
+    gap: 24px;
+}
+
+.configuracoes-coluna .bloco-titulo {
+    align-items: center;
+}
+
+.configuracoes-coluna .bloco-titulo h3 {
+    margin: 0;
+}
+
+/* Uma linha "texto · botão ou interruptor" com divisória. */
+.config-linha {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--lilas-forte);
+}
+
+.config-linha:last-child {
+    border-bottom: none;
+}
+
+/* Pílulas de um bloco "Em breve": mostram a opção, mas não mudam. */
+.opcoes-pilula:disabled span {
+    cursor: not-allowed;
+}
+
+
+/* ---------------------------------------------------------------------
+   Telas menores
+   --------------------------------------------------------------------- */
+@media (max-width: 1300px) {
+    .minha-casa-grade,
+    .quiz-layout,
+    .contatos-layout,
+    .fale-layout,
+    .configuracoes-grade {
+        grid-template-columns: 1fr;
+    }
+
+    .protecao-ilustracao {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    main.container {
+        padding-top: 24px;
+    }
+
+    .controles-rapidos,
+    .ambientes-mini,
+    .passos {
+        grid-template-columns: 1fr;
+    }
+
+    .faixa-status {
+        padding: 24px;
+    }
+
+    .casa-vazia {
+        padding: 32px 20px;
+    }
+
+    .protecao-topo h1 {
+        font-size: 40px;
+    }
+
+    .canal-detalhes {
+        margin-left: 0;
+    }
+}

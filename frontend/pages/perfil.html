@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações — E.L.O.</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/componentes.css">
+    <link rel="stylesheet" href="/css/paginas.css">
+</head>
+<body>
+    <!-- Configurações do perfil mulher (abre pelo avatar).
+         Visual: docs/proposta/14-configuracoes.png.
+         Só "Perfil e conta" funciona de verdade (PUT /api/profile). "Senha e
+         segurança", "Notificações" e "Aparência e acessibilidade" aparecem
+         desativados, com o selo "Em breve". -->
+    <div id="cabecalho"></div>
+
+    <main class="container">
+        <div class="titulo-pagina">
+            <h1>Configurações</h1>
+            <p>Seus dados, preferências e privacidade.</p>
+        </div>
+
+        <div id="mensagem"></div>
+
+        <div class="configuracoes-grade">
+            <div class="configuracoes-coluna">
+                <section class="card">
+                    <h3>Perfil e conta</h3>
+                    <form class="formulario" id="formulario-perfil">
+                        <div class="campo">
+                            <label for="perfil-nome">Nome</label>
+                            <input type="text" id="perfil-nome" autocomplete="name" required>
+                        </div>
+                        <div class="campo">
+                            <label for="perfil-email">E-mail</label>
+                            <input type="email" id="perfil-email" autocomplete="email" required>
+                        </div>
+                        <div class="campo">
+                            <label for="perfil-telefone">Telefone</label>
+                            <input type="tel" id="perfil-telefone" autocomplete="tel">
+                        </div>
+                        <!-- As mesmas 3 opções do cadastro (rádio em pílula). -->
+                        <fieldset class="campo opcoes-pilula">
+                            <legend>Como você se identifica?</legend>
+                            <div class="opcoes-pilula-lista">
+                                <label><input type="radio" name="perfil_acesso" value="mulher" required><span>Mulher</span></label>
+                                <label><input type="radio" name="perfil_acesso" value="homem"><span>Homem</span></label>
+                                <label><input type="radio" name="perfil_acesso" value="nao_definido"><span>Prefiro não informar</span></label>
+                            </div>
+                        </fieldset>
+                        <div class="formulario-botoes">
+                            <button type="submit" class="botao">Salvar alterações</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="card">
+                    <div class="bloco-titulo">
+                        <h3>Senha e segurança</h3>
+                        <span class="selo-exemplo">Em breve</span>
+                    </div>
+                    <div class="config-linha">
+                        <span>Alterar senha</span>
+                        <button type="button" class="botao botao-contorno botao-pequeno" disabled>Alterar</button>
+                    </div>
+                    <div class="config-linha">
+                        <span>Sair de todos os aparelhos</span>
+                        <button type="button" class="botao botao-contorno botao-pequeno" disabled>Sair</button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="configuracoes-coluna">
+                <section class="card">
+                    <div class="bloco-titulo">
+                        <h3>Notificações</h3>
+                        <span class="selo-exemplo">Em breve</span>
+                    </div>
+                    <div class="config-linha">
+                        <span>Avisos da casa (portas e janelas)</span>
+                        <button type="button" class="interruptor" role="switch" aria-checked="true" disabled
+                                aria-label="Avisos da casa (em breve)"></button>
+                    </div>
+                    <div class="config-linha">
+                        <span>Rotinas executadas</span>
+                        <button type="button" class="interruptor" role="switch" aria-checked="true" disabled
+                                aria-label="Rotinas executadas (em breve)"></button>
+                    </div>
+                    <div class="config-linha">
+                        <span>Resumo semanal de consumo</span>
+                        <button type="button" class="interruptor" role="switch" aria-checked="false" disabled
+                                aria-label="Resumo semanal de consumo (em breve)"></button>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="bloco-titulo">
+                        <h3>Aparência e acessibilidade</h3>
+                        <span class="selo-exemplo">Em breve</span>
+                    </div>
+                    <fieldset class="campo opcoes-pilula" disabled>
+                        <legend>Tamanho do texto</legend>
+                        <div class="opcoes-pilula-lista">
+                            <label><input type="radio" name="tamanho_texto" value="normal" checked><span>Normal</span></label>
+                            <label><input type="radio" name="tamanho_texto" value="grande"><span>Grande</span></label>
+                        </div>
+                    </fieldset>
+                    <div class="config-linha">
+                        <span>Alto contraste</span>
+                        <button type="button" class="interruptor" role="switch" aria-checked="false" disabled
+                                aria-label="Alto contraste (em breve)"></button>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h3>Privacidade</h3>
+                    <p>O E.L.O. guarda só o necessário: seus dados de cadastro e a sua casa simulada.
+                       Na área de Proteção, seus contatos de confiança só são salvos com o seu consentimento,
+                       as respostas do quiz não são salvas e os alertas de emergência guardam apenas o tipo e a hora.
+                       O administrador não vê seus contatos nem seus alertas.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="rodape"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/perfil.js"></script>
+</body>
+</html>
