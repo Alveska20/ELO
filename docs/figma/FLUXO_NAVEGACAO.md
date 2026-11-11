@@ -158,7 +158,7 @@ flowchart LR
     DISP2 -- "Ambiente ›" --> COM2
     INICIO -- "▶ Cenário" --> INICIO
     ADM -. "só VÊ o perfil (aviso de contas não definidas)" .-> ADM
-    CONFIG -- "Como você se identifica?<br/>(Mulher leva ao roxo)" --> CONFIG
+    CONFIG -- "Como você se identifica?<br/>(só não definido, uma vez;<br/>Mulher leva ao roxo)" --> CONFIG
     MENU -- Sair --> LOGIN
     TAGS2 -- "Tag Sala" --> COMR[comodo.html?id=N<br/>roxo] -- "layout.js" --> COM2
     TAGS2 -. "Tag Proteção / Emergência:<br/>sem permissão (403)" .-> TAGS2
@@ -226,7 +226,7 @@ flowchart LR
 | Configurações (escuro) | Editar perfil → Salvar alterações | Configurações (mensagem de sucesso) | escuro |
 | Administração | Usuários · Cômodos · Dispositivos · Tags · Informações gerais | Administração (seção escolhida) | admin |
 | Administração | Só leitura: a tabela mostra o perfil de cada conta; o quadro "Contas novas" é um AVISO ("Estas contas ainda não definiram o perfil. Peça para a pessoa escolher em Configurações > Como você se identifica?"). Não há seletor nem botões para mudar o perfil | — | admin |
-| Configurações (roxo e escuro) | "Como você se identifica?" → Salvar | o perfil da própria pessoa muda na hora; se o visual muda (roxo ↔ escuro), vai para a tela inicial do visual novo | logado |
+| Configurações (roxo e escuro) | "Como você se identifica?" (só para `nao_definido`: Mulher / Homem) → Salvar → aviso de confirmação na página → "Sim, definir" | o perfil é definido na hora, uma única vez; se o visual muda (escuro → roxo), vai para a tela inicial do visual novo. Perfil já definido: só aparece "Perfil: Mulher" ou "Perfil: Homem" | logado |
 | Qualquer página logada, sem sessão | (automático) | Login | — |
 | Página de admin, Proteção ou tela escura, sem permissão | (automático) | Minha casa com mensagem de sem permissão | — |
 | Página roxa da casa, Câmeras, Avisos ou Fale conosco, com o visual escuro | (automático, `PAGINAS_ESCURAS`) | a tela escura equivalente (Câmeras → filtro Câmeras; Avisos → Dispositivos; Fale conosco → Início) | escuro |
@@ -242,15 +242,17 @@ flowchart LR
     PH --> LOGIN2[Login] --> ESC["Início (escuro)"]
     PN --> LOGIN3[Login] --> ESC2["Início (escuro)"]
     PN -. "aviso em Contas novas" .-> ADM["Administração<br/>(só vê o perfil)"]
-    CONF["Configurações<br/>Como você se identifica?"] -- "a própria pessoa troca" --> PM & PH & PN
+    PN -- "define UMA vez" --> CONF["Configurações<br/>Como você se identifica?"]
+    CONF -- "Mulher" --> PM
+    CONF -- "Homem" --> PH
 ```
 
 - O backend aceita só `mulher`, `homem` e `nao_definido`; qualquer outro valor vira `nao_definido` (`perfil_do_cadastro()` em `auth_service.py`). O **papel** nunca vem do formulário.
-- Depois do cadastro, **só a própria pessoa** troca o perfil, em Configurações > "Como você se identifica?" (mesmas 3 opções). O admin **não** altera o perfil de ninguém: não existe rota para isso, e a Administração só mostra o perfil.
+- O perfil é escolhido no cadastro. Quem escolhe "Prefiro não informar" pode definir o perfil uma única vez, em Configurações > "Como você se identifica?" (só Mulher ou Homem). Depois de definido, ele não muda mais (o backend responde 403). Assim, ninguém com acesso ao celular consegue esconder ou revelar a Proteção. O admin **não** altera o perfil de ninguém: não existe rota para isso, e a Administração só mostra o perfil.
 - Login e cadastro são neutros: nenhum texto sobre a Proteção ou sobre "área da mulher" (a palavra "Mulher" aparece só como opção da pergunta).
 
 ## O perfil é da própria pessoa
 
-- **Configurações** (roxo: avatar → Configurações; escuro: menu lateral → Configurações) tem "Como você se identifica?" (Mulher / Homem / Prefiro não informar), sem citar a Proteção. Escolher "Mulher" leva ao visual roxo; "Homem" ou "Prefiro não informar", ao escuro.
+- **Configurações** (roxo: avatar → Configurações; escuro: menu lateral → Configurações) para quem ainda está "não definido", mostra "Como você se identifica?" só com Mulher e Homem, o aviso "Atenção: você só poderá escolher uma vez." e uma confirmação dentro da página antes de salvar, sem citar a Proteção. Escolher "Mulher" leva ao visual roxo; "Homem" continua no escuro. Com o perfil já definido, aparece só "Perfil: Mulher" ou "Perfil: Homem" e "O perfil é definido uma única vez."
 - **Administração:** só consulta o perfil. As contas "não definido" aparecem num quadro de aviso, sem botões.
 - **Tags:** "Abrir a Proteção E.L.O." e "Abrir o Preciso de ajuda" só aparecem no formulário do perfil mulher; para homem, não definido e admin o backend recusa criar ou editar Tag com essas funções (403). No seed, só a Maria recebe as Tags "Proteção" e "Emergência".

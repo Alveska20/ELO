@@ -1,6 +1,8 @@
 """
 Testes da casa inteligente: dispositivos, Tags e isolamento entre usuários.
 """
+import sqlite3
+
 from tests.conftest import EMAIL_HOMEM, EMAIL_MULHER, EMAIL_NAO_DEFINIDO
 
 
@@ -49,13 +51,33 @@ def test_simular_leitura_de_tag_retorna_destino_certo(logar):
     assert maria.post("/api/tags/scan", json={"codigo": "EMERGENCIA"}).get_json()["destino"] == "/pages/protecao-ajuda.html"
 
 
-def test_tag_de_protecao_nao_abre_para_outros_perfis(logar):
-    """Se a Maria trocar o perfil para "homem", as Tags de Proteção e
-    Emergência dela deixam de abrir (403)."""
+def test_tag_de_protecao_nao_abre_para_outros_perfis(app, logar):
+    """Uma Tag de Proteção ou Emergência só abre para o perfil mulher.
+    Como o perfil não muda depois de definido, a única forma de uma conta
+    "homem" ter essas Tags é alguém gravar direto no banco: mesmo assim,
+    a leitura responde 403."""
+    conexao = sqlite3.connect(app.config["DATABASE"])
+    joao_id = conexao.execute("SELECT id FROM usuarios WHERE email = ?", (EMAIL_HOMEM,)).fetchone()[0]
+    conexao.executemany(
+        "INSERT INTO tags (usuario_id, nome, codigo, funcao) VALUES (?, ?, ?, ?)",
+        [(joao_id, "Proteção", "PROTECAO", "abrir_protecao"),
+         (joao_id, "Emergência", "EMERGENCIA", "abrir_emergencia")],
+    )
+    conexao.commit()
+    conexao.close()
+
+    joao = logar(EMAIL_HOMEM)
+    assert joao.post("/api/tags/scan", json={"codigo": "PROTECAO"}).status_code == 403
+    assert joao.post("/api/tags/scan", json={"codigo": "EMERGENCIA"}).status_code == 403
+
+
+def test_maria_nao_esconde_a_protecao_trocando_o_perfil(logar):
+    """Alguém com o celular da Maria tenta trocar o perfil dela para "homem":
+    recebe 403, e as Tags de Proteção e Emergência continuam abrindo."""
     maria = logar(EMAIL_MULHER)
-    maria.put("/api/profile", json={"perfil_acesso": "homem"})
-    assert maria.post("/api/tags/scan", json={"codigo": "PROTECAO"}).status_code == 403
-    assert maria.post("/api/tags/scan", json={"codigo": "EMERGENCIA"}).status_code == 403
+    assert maria.put("/api/profile", json={"perfil_acesso": "homem"}).status_code == 403
+    assert maria.post("/api/tags/scan", json={"codigo": "PROTECAO"}).status_code == 200
+    assert maria.post("/api/tags/scan", json={"codigo": "EMERGENCIA"}).status_code == 200
 
 
 def test_seed_so_da_tags_de_protecao_para_a_maria(logar):

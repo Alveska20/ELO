@@ -1,24 +1,51 @@
 """
 Regras do "Meu Perfil": a pessoa vê e edita os próprios dados.
 
-O que ela PODE mudar: nome, e-mail, telefone e o perfil de
-acesso, respondendo "Como você se identifica?" (Mulher / Homem / Prefiro
-não informar). O perfil é conferido por perfil_do_cadastro(): qualquer
-valor fora dos 3 aceitos vira "nao_definido".
+O que ela PODE mudar: nome, e-mail e telefone, a qualquer momento.
+
+O perfil de acesso é escolhido no cadastro e só pode ser DEFINIDO UMA VEZ:
+- quem está "nao_definido" ("Prefiro não informar") pode escolher
+  "mulher" ou "homem" uma única vez, em Configurações;
+- depois disso o perfil não muda mais (403, e nada da requisição é salvo).
+Assim, ninguém com acesso ao celular consegue esconder ou revelar a Proteção.
+O perfil enviado é conferido por perfil_do_cadastro(): qualquer valor fora
+dos 3 aceitos vira "nao_definido".
+
 O que ela NÃO pode mudar: o papel (usuario/admin), que só o seed define.
 O admin também não muda o perfil de ninguém.
 """
 from app.database.db import get_db
-from app.services.auth_service import buscar_usuario_por_email, normalizar_email, perfil_do_cadastro
+from app.services.auth_service import PERFIL_PADRAO, buscar_usuario_por_email, normalizar_email, perfil_do_cadastro
 from app.utils.requisicao import texto
 
 # Únicos campos aceitos no PUT /api/profile. Qualquer outro campo enviado
 # (ex.: "papel": "admin") é simplesmente ignorado.
 CAMPOS_EDITAVEIS = ("nome", "email", "telefone", "perfil_acesso")
 
+ERRO_PERFIL_JA_DEFINIDO = "O perfil já foi definido e não pode ser alterado."
 
-def validar_perfil(usuario_id, dados):
-    """Devolve (erro, None) ou (None, dados_limpos)."""
+
+def perfil_pedido(perfil_atual, valor_recebido):
+    """Qual perfil a requisição pede. Sem perfil_acesso (ausente ou null)
+    mantém o atual; qualquer outro valor passa por perfil_do_cadastro()."""
+    if valor_recebido is None:
+        return perfil_atual
+    return perfil_do_cadastro(valor_recebido)
+
+
+def pode_trocar_perfil(perfil_atual, perfil_novo):
+    """Regra do "definido uma única vez":
+    - igual ao atual: pode (a pessoa só está editando nome/e-mail/telefone);
+    - atual "nao_definido": pode (é a definição única);
+    - atual "mulher" ou "homem" e valor diferente: NÃO pode."""
+    if perfil_novo == perfil_atual:
+        return True
+    return perfil_atual == PERFIL_PADRAO
+
+
+def validar_perfil(usuario_id, dados, perfil_atual):
+    """Devolve (erro, None) ou (None, dados_limpos).
+    A troca de perfil proibida é conferida antes, na rota (403)."""
     nome = texto(dados.get("nome"))
     email = normalizar_email(texto(dados.get("email")))
     telefone = texto(dados.get("telefone"))
@@ -41,7 +68,7 @@ def validar_perfil(usuario_id, dados):
         "nome": nome,
         "email": email,
         "telefone": telefone,
-        "perfil_acesso": perfil_do_cadastro(dados.get("perfil_acesso")),
+        "perfil_acesso": perfil_pedido(perfil_atual, dados.get("perfil_acesso")),
     }
 
 

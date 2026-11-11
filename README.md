@@ -42,7 +42,7 @@ O E.L.O. une duas partes:
 
 ## 2. Funcionalidades por perfil
 
-O perfil é escolhido no cadastro, na pergunta **"Como você se identifica?"**. Depois, **só a própria pessoa** pode trocá-lo, em **Configurações**. O administrador apenas vê o perfil de cada conta.
+O perfil é escolhido no cadastro, na pergunta **"Como você se identifica?"**. Quem escolhe "Prefiro não informar" pode definir o perfil **uma única vez**, em **Configurações**. Depois de definido, ele não muda mais. Assim, ninguém com acesso ao celular consegue esconder ou revelar a Proteção. O administrador apenas vê o perfil de cada conta.
 
 | Perfil | Visual | O que acessa |
 |-|-|-|
@@ -510,7 +510,7 @@ Use o programa **só para olhar**: mudanças feitas por ele não passam pelas re
 | **Sessão** | Cookie assinado com a `SECRET_KEY`, que guarda só o `usuario_id`. É `HttpOnly`: o JavaScript não consegue lê-lo |
 | **Permissões** | Decorators em cada rota: `@login_required` (401), `@admin_required`, `@acesso_mulher_required` e `@area_escura_required` (403). O frontend só esconde menus; **quem bloqueia de verdade é o backend** |
 | **Isolamento** | Toda consulta filtra pelo `usuario_id`. Pedir o dado de outra pessoa devolve 404 |
-| **Perfil** | No cadastro e em Configurações, aceita só mulher, homem e não definido (qualquer outro valor vira não definido). **Só a própria pessoa** troca o seu perfil; o admin não tem rota para isso. O papel de admin **nunca** vem de formulário |
+| **Perfil** | O perfil é escolhido no cadastro (aceita só mulher, homem e não definido; qualquer outro valor vira não definido). Quem escolhe "Prefiro não informar" pode definir o perfil **uma única vez**, em Configurações. Depois de definido, ele não muda mais: o backend responde 403 e não salva nada da requisição. Assim, ninguém com acesso ao celular consegue esconder ou revelar a Proteção. O admin não tem rota para mudar perfis. O papel de admin **nunca** vem de formulário |
 | **Admin** | Não altera o perfil de ninguém e não tem nenhuma rota ou tela para contatos de confiança, alertas ou quiz. O próprio admin recebe 403 na Proteção. O aviso "Contas novas" só lista quem ainda não definiu o perfil |
 | **Tags** | As funções "Abrir a Proteção E.L.O." e "Abrir o Preciso de ajuda" só aparecem e só são aceitas para o perfil mulher |
 | **Contatos de confiança** | Só podem ser cadastrados depois que a usuária aceita o aviso de privacidade. O backend confere de novo antes de salvar |

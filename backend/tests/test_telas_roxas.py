@@ -207,12 +207,36 @@ def test_roxo_sem_placeholder_visivel(cliente):
 def test_configuracoes_tem_como_voce_se_identifica_e_privacidade(cliente):
     html = ler(cliente, "/pages/perfil.html")
     assert "Como você se identifica?" in html
-    for valor in ["mulher", "homem", "nao_definido"]:
-        assert f'value="{valor}"' in html
     assert "O administrador não vê seus contatos nem seus alertas." in html
     assert "Proteção E.L.O." not in html.split("Como você se identifica?")[1].split("</fieldset>")[0]
     escuro = ler(cliente, "/pages/escuro/configuracoes.html")
     assert "Como você se identifica?" in escuro
+
+
+def test_configuracoes_so_deixa_definir_o_perfil_uma_vez(cliente):
+    """Nos dois visuais: só Mulher e Homem (sem "Prefiro não informar"),
+    o aviso de escolha única, o texto do perfil já definido e a
+    confirmação dentro da página (sem alert/confirm do navegador)."""
+    paginas = [("/pages/perfil.html", "/js/perfil.js"),
+               ("/pages/escuro/configuracoes.html", "/js/escuro/configuracoes.js")]
+    for pagina, script in paginas:
+        html = ler(cliente, pagina)
+        assert 'value="mulher"' in html and 'value="homem"' in html, pagina
+        assert 'value="nao_definido"' not in html, pagina
+        assert "Prefiro não informar" not in html, pagina
+        assert "Atenção: você só poderá escolher uma vez." in html, pagina
+        assert "O perfil é definido uma única vez." in html, pagina
+        assert 'role="alertdialog"' in html, pagina
+
+        js = ler(cliente, script)
+        assert "Perfil: " in js, script
+        for proibido in ["alert(", "confirm("]:
+            assert proibido not in js, (script, proibido)
+
+    # O cadastro continua com as 3 opções.
+    cadastro = ler(cliente, "/pages/cadastro.html")
+    for valor in ["mulher", "homem", "nao_definido"]:
+        assert f'value="{valor}"' in cadastro
 
 
 def test_administracao_so_mostra_o_perfil(cliente):

@@ -41,15 +41,29 @@
                             <label for="perfil-telefone">Telefone</label>
                             <input type="tel" id="perfil-telefone" autocomplete="tel">
                         </div>
-                        <!-- As mesmas 3 opções do cadastro (rádio em pílula). -->
-                        <fieldset class="campo opcoes-pilula">
+                        <!-- O perfil é definido UMA única vez (o backend garante).
+                             Já definido: só o texto. "Não definido": só Mulher e Homem,
+                             com confirmação dentro da página antes de salvar. -->
+                        <div class="campo oculto" id="perfil-definido">
+                            <p><strong id="perfil-definido-texto"></strong></p>
+                            <p>O perfil é definido uma única vez.</p>
+                        </div>
+                        <fieldset class="campo opcoes-pilula oculto" id="perfil-escolha">
                             <legend>Como você se identifica?</legend>
                             <div class="opcoes-pilula-lista">
-                                <label><input type="radio" name="perfil_acesso" value="mulher" required><span>Mulher</span></label>
+                                <label><input type="radio" name="perfil_acesso" value="mulher"><span>Mulher</span></label>
                                 <label><input type="radio" name="perfil_acesso" value="homem"><span>Homem</span></label>
-                                <label><input type="radio" name="perfil_acesso" value="nao_definido"><span>Prefiro não informar</span></label>
                             </div>
+                            <p><strong>Atenção: você só poderá escolher uma vez.</strong></p>
                         </fieldset>
+                        <div class="mensagem mensagem-info oculto" id="perfil-confirmacao" role="alertdialog"
+                             aria-labelledby="perfil-confirmacao-texto">
+                            <p id="perfil-confirmacao-texto"></p>
+                            <div class="formulario-botoes">
+                                <button type="button" class="botao botao-pequeno" id="perfil-confirmar">Sim, definir</button>
+                                <button type="button" class="botao botao-contorno botao-pequeno" id="perfil-cancelar">Voltar</button>
+                            </div>
+                        </div>
                         <div class="formulario-botoes">
                             <button type="submit" class="botao">Salvar alterações</button>
                         </div>

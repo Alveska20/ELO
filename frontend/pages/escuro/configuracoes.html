@@ -11,9 +11,10 @@
      O resto do Figma (senha, endereço, preferências, segurança, integrações,
      aparência) não existe no sistema: esses blocos mostram DADOS
      FICTÍCIOS (homem.json → exemplos), sempre com o selo "Dados de exemplo".
-     A própria pessoa escolhe "Como você se identifica?" no cartão
-     "Perfil e conta" (as mesmas 3 opções do cadastro). O admin não muda o
-     perfil de ninguém. -->
+     "Como você se identifica?" no cartão "Perfil e conta": o perfil é
+     definido uma única vez. Só quem está "não definido" vê as opções
+     Mulher e Homem; depois disso aparece só o texto do perfil. O admin não
+     muda o perfil de ninguém. -->
 <body class="escuro">
     <div id="cabecalho"></div>
 
@@ -55,17 +56,31 @@
                         <input type="tel" id="perfil-campo-telefone" autocomplete="tel">
                     </div>
                 </form>
-                <!-- "Como você se identifica?": formulário próprio, sempre visível. -->
-                <form id="formulario-identificacao" class="h-espaco">
+                <!-- O perfil é definido UMA única vez (o backend garante).
+                     Já definido: só o texto. "Não definido": formulário com
+                     Mulher e Homem e confirmação dentro da página antes de salvar. -->
+                <div class="h-espaco oculto" id="perfil-definido">
+                    <p style="margin: 0;"><strong id="perfil-definido-texto"></strong></p>
+                    <p class="h-subtitulo" style="margin: 4px 0 0;">O perfil é definido uma única vez.</p>
+                </div>
+                <form id="formulario-identificacao" class="h-espaco oculto">
                     <fieldset class="h-opcoes">
                         <legend>Como você se identifica?</legend>
                         <div class="h-opcoes-lista">
                             <label><input type="radio" name="perfil_acesso" value="mulher" required><span>Mulher</span></label>
                             <label><input type="radio" name="perfil_acesso" value="homem"><span>Homem</span></label>
-                            <label><input type="radio" name="perfil_acesso" value="nao_definido"><span>Prefiro não informar</span></label>
                         </div>
                     </fieldset>
+                    <p style="margin: 10px 0 0;"><strong>Atenção: você só poderá escolher uma vez.</strong></p>
                     <button type="submit" class="h-botao h-botao-pequeno" style="margin-top: 12px;">Salvar</button>
+                    <div class="mensagem oculto" id="identificacao-confirmacao" role="alertdialog"
+                         aria-labelledby="identificacao-confirmacao-texto">
+                        <p id="identificacao-confirmacao-texto" style="margin-top: 0;"></p>
+                        <div class="h-botoes">
+                            <button type="button" class="h-botao h-botao-pequeno" id="identificacao-confirmar">Sim, definir</button>
+                            <button type="button" class="h-botao h-botao-contorno h-botao-pequeno" id="identificacao-cancelar">Voltar</button>
+                        </div>
+                    </div>
                 </form>
                 <div class="h-botoes">
                     <button type="button" class="h-botao h-botao-contorno" id="botao-editar">Editar perfil</button>
